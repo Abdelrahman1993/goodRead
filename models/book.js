@@ -1,6 +1,6 @@
-const mogoose = require('mongoose');
+const mongoose = require('mongoose');
 
-const bookSchema = new Schema({
+const bookSchema = new mongoose.Schema({
     photo:String,
     name : String,
     categoryId:{
@@ -14,5 +14,5 @@ const bookSchema = new Schema({
     rate:Number
 });
 
-const Book = mongoose.modle('books', bookSchema);
+const Book = mongoose.model('books', bookSchema);
 module.exports = Book;

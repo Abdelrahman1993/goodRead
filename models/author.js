@@ -1,6 +1,6 @@
-const mogoose = require('mongoose');
+const mongoose = require('mongoose');
 
-const authorSchema = new Schema({
+const authorSchema = new mongoose.Schema({
     photo: String,
     firstName: String,
     lastName: String,
