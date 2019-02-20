@@ -10,7 +10,7 @@ categoryRouter.get('/', (req, res) => {
     Category.find().then((data) => {
         res.json(data);
     }).catch((err) => {
-        res.send('error in getting data');
+        res.json({msg: 'error in getting data'});
     });
 });
 
@@ -22,9 +22,9 @@ categoryRouter.post('/', (req, res) => {
     });
     category.save((err) => {
         if (!err) {
-            res.send('saved');
+            res.json({msg: 'saved'});
         }else{
-            res.send('error'+err);
+            res.json({msg: err});
         }
 
     });
@@ -36,16 +36,16 @@ categoryRouter.get('/:id', (req, res) => {
     Book.find({ categoryId: req.params.id }).then((data) => {
         res.json(data);
     }).catch((err) => {
-        res.send('error in getting data ' + err);
+        res.json({msg: err});
     });    
 });
 
 // update category by id
 categoryRouter.patch('/:id', (req, res) => {
     Category.updateOne({_id: req.params.id},{ $set: { name: req.body.name },}).then(() => {
-        res.send('updated')
+        res.json({msg: 'updated'})
     }).catch((err) => {
-        res.send('error in update data' + err);
+        res.json({msg: err});
     });
 });
 
@@ -56,10 +56,10 @@ categoryRouter.delete('/:id', (req, res) => {
 
     Category.findByIdAndRemove(req.params.id).then(() => {
         Book.findByIdAndRemove({ categoryId: req.params.id }).then(() => {
-            res.send('deleted');
+            res.json({msg: 'deleted'});
         });
     }).catch(() => {
-        res.send('error in delete data ' + err);
+        res.json({msg: err});
     });
 });
 
