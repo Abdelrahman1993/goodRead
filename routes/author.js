@@ -58,6 +58,7 @@ authorRouter.delete('/:id', (req, res) => {
         });
     }).catch(() => {
         res.send('error in delete data ' + err);
+        
     });
 });
 //get books of specific author 
