@@ -8,6 +8,7 @@ const keys = require('./configs/keys');
 const bodyParser = require('body-parser');
 const autherRouter = require('./routes/authors');
 const categoryRouter = require('./routes/categories');
+const userRouter = require('./routes/users');
 const app = express();
 const PORT = process.env.PORT || 3000;
 mongoose.set('useCreateIndex', true);
@@ -44,6 +45,9 @@ app.use('/categories', categoryRouter);
 
 //authors router
 app.use('/authors', autherRouter);
+
+//users router
+app.use('/users',userRouter);
 
 app.listen(PORT, (req, res) => {
     console.log("server running");
