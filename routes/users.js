@@ -40,6 +40,29 @@ User.findOne({email: req.body.email}).then(user => {
     });
 });
 
+// @route   GET /users/login
+// @desc    login user
+// @access  Public
+router.post('/login', (req, res)=>{
 
+    const email= req.body.email;
+    const password = req.body.password;
+    User.findOne({email: email})
+        .then(user=>{
+            if(!user){
+                res.status(404).json({email: 'email not found'});
+            }else{
+                bcrypt.compare(password, user.password)
+                    .then(isMached=>{
+                        if(isMached){
+                            res.json({msg: 'success'});
+                        }else{
+                            res.status(400).json({password: 'password incorrect'});
+                        }
+                    })
+            }
+        });
+
+});
 
 module.exports = router;
