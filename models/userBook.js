@@ -1,4 +1,4 @@
-const mogoose = require('mongoose');
+const mongoose = require('mongoose');
 
 const userBookSchema = new mongoose.Schema({
     userId: {
@@ -9,10 +9,11 @@ const userBookSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Book"
     },
-    shelve: { type: 'String', enum: ['Reading', 'will read', 'read'] },
-    rate: Number
+    shelve: { type: 'String', enum: ['reading', 'will read', 'read'] },
+    rate: Number,
+    review: String
 
 });
 
 const UserBook = mongoose.model('userBooks', userBookSchema);
-module.exports = Category;
+module.exports = UserBook ;

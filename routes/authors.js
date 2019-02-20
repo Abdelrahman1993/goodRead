@@ -2,15 +2,17 @@ const express = require('express');
 const Author = require('../models/author');
 const Book = require('../models/book');
 const authorRouter = express.Router();
+
 //get all authors
 authorRouter.get('/', (req, res) => {
     Author.find().then((data) => {
-        res.send(data);
+        res.json(data);
     }).catch((err) => {
         res.send('error in getting data');
     });
 
 });
+
 //add new author
 authorRouter.post('/', (req, res) => {
     const author = new Author({
@@ -22,7 +24,7 @@ authorRouter.post('/', (req, res) => {
     });
     author.save((err) => {
         if (!err) {
-            console.log("saved");
+            res.send("saved");
         }
     });
 });
@@ -35,6 +37,7 @@ authorRouter.get('/:id', (req, res) => {
         res.send('error in getting data');
     });
 });
+
 // update author by id
 authorRouter.put('/:id', (req, res) => {
     Author.findOneAndUpdate(req.params.id, {

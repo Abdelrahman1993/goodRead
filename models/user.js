@@ -4,7 +4,11 @@ const userSchema = new mongoose.Schema({
     
     firstName : String,
     lastName : String,
-    userName : String,
+    userName : {
+        type: String,
+        unique: true,
+        required: 'Email address is required',  
+    },
     email: {
         type: String,
         trim: true,
@@ -13,7 +17,11 @@ const userSchema = new mongoose.Schema({
         required: 'Email address is required',
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
     },
-    password : String
+    password : String,
+    isAdmin: {
+        type: Boolean,
+        default: false
+    }
 });
 
 
