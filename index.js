@@ -37,7 +37,7 @@ app.use('/categories', categoryRouter);
 //authors router
 app.use('/authors', autherRouter);
 
-//authors book
+// books router
 app.use('/book', bookRouter);
 
 app.listen(PORT, (req, res) => {

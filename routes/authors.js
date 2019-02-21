@@ -1,8 +1,13 @@
 const express = require('express');
+const fs = require('fs');
 const Author = require('../models/author');
 const Book = require('../models/book');
 const authorRouter = express.Router();
-
+const multer=require('multer');
+const upload=multer({dest:'uploads/'});
+const storsge = multer.diskStorage({
+    
+});
 //get all authors
 authorRouter.get('/', (req, res) => {
     Author.find().then((data) => {
@@ -14,14 +19,19 @@ authorRouter.get('/', (req, res) => {
 });
 
 //add new author
-authorRouter.post('/', (req, res) => {
+authorRouter.post('/',upload.single('photo') ,(req, res) => {
+
     const author = new Author({
-        photo: req.body.photo,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         dateOfBirth: req.body.dateOfBirth,
         description: req.body.description
     });
+    // if(fs.existsSync('../images/Chuck.jpg')){
+        // console.log("assas");
+        author.photo.data = fs.readFileSync('home/aya/hhh.png');
+        author.photo.contentType = 'image/png';
+    // };
     author.save((err) => {
         if (!err) {
             res.send("saved");
@@ -37,7 +47,6 @@ authorRouter.get('/:id', (req, res) => {
         res.send('error in getting data');
     });
 });
-
 // update author by id
 authorRouter.put('/:id', (req, res) => {
     Author.findOneAndUpdate(req.params.id, {
@@ -61,7 +70,7 @@ authorRouter.delete('/:id', (req, res) => {
         });
     }).catch(() => {
         res.send('error in delete data ' + err);
-        
+
     });
 });
 //get books of specific author 
