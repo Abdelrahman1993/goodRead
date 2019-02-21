@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const keys = require('../configs/keys');
 const passport = require('passport');
 
+
 // Load User model
 const User = require('../models/user');
 
@@ -29,11 +30,10 @@ User.findOne({email: req.body.email}).then(user => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
         if (err) 
             req.json({err: err});
-        
-        newUser.password = hash;
-        newUser.save()
-        .then(user => res.json(user))
-        .catch(err => console.log(err));
+            newUser.password = hash;
+            newUser.save()
+            .then(user => res.json(user))
+            .catch(err => console.log(err));
         });
         });
     }
@@ -55,7 +55,24 @@ router.post('/login', (req, res)=>{
                 bcrypt.compare(password, user.password)
                     .then(isMached=>{
                         if(isMached){
-                            res.json({msg: 'success'});
+                            //if user mached lets creat the token
+                            //create the payload
+                            const payload={
+                                firstName: user.firstName,
+                                lastName: user.lastName,
+                                userName: user.userName,
+                                email: user.email,
+                                photo: user.photo
+                            };
+
+                            jwt.sign(payload, keys.secretOrKey, {expiresIn: 3600}, (err,token)=>{
+                                if(!err){
+                                    res.json({token: "Bearer "+ token});
+                                }else{
+                                    res.json({err: err});
+                                }
+                            });
+                            //res.json({msg: 'success'});
                         }else{
                             res.status(400).json({password: 'password incorrect'});
                         }

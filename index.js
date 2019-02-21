@@ -44,6 +44,6 @@ app.use('/users',userRouter);
 app.use('/book', bookRouter);
 
 app.listen(PORT, (req, res) => {
-    console.log("server running");
+    console.log("server running on port: "+ PORT);
 });
 
