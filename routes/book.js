@@ -2,29 +2,61 @@ const express = require('express');
 const Book = require('../models/book');
 const bookRouter = express.Router();
 
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, new Date().toISOString() + file.originalname);
+    }
+});
+
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
+}
+
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1024 * 1024 * 5
+    },
+    fileFilter: fileFilter
+});
+
 //get all books
 bookRouter.get('/', (req, res) => {
     Book.find().then((data) => {
         res.json(data);
     }).catch((err) => {
-        res.json({msg:err});
+        res.json({ msg: err });
     });
 
 });
 
 //add new book
-bookRouter.post('/', (req, res) => {
+bookRouter.post('/', upload.single('photo'), (req, res) => {
     const book = new Book({
-        photo: req.body.photo,
+        photo: req.file.path,
         name: req.body.name,
         categoryId: req.body.categoryId,
         authorId: req.body.authorId,
         rate: req.body.rate
     });
-    book.save((err) => {
-        if (!err) {
-            console.log("saved");
-        }
+    book.save().then(result => {
+        console.log(result);
+        res.status(201).json({
+            message: "Created book successfully",
+        });
+    }).catch(err => {
+        console.log("err : " + err);
+        res.status(500).json({
+            error: err
+        });
     });
 });
 
@@ -33,7 +65,7 @@ bookRouter.get('/:id', (req, res) => {
     Book.findById(req.params.id).then((data) => {
         res.json(data);
     }).catch((err) => {
-        res.json({msg:err});
+        res.json({ msg: err });
     });
 });
 
@@ -48,7 +80,7 @@ bookRouter.put('/:id', (req, res) => {
     }).then((data) => {
         res.json(data)
     }).catch((err) => {
-        res.json({msg:err});
+        res.json({ msg: err });
     });
 
 });
@@ -59,7 +91,7 @@ bookRouter.delete('/:id', (req, res) => {
         res.json(data);
 
     }).catch((err) => {
-        res.json({msg:err});
+        res.json({ msg: err });
     });
 });
 
@@ -67,8 +99,8 @@ bookRouter.delete('/:id', (req, res) => {
 bookRouter.get('/:id/user', (req, res) => {
     Book.find({ userId: req.params.id }).then((data) => {
         res.json(data);
-   }).catch((err) => {
-    res.json({msg:err});
+    }).catch((err) => {
+        res.json({ msg: err });
     });
 });
 

@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const authorSchema = new mongoose.Schema({
-    photo: { data: Buffer, contentType: String},
-    firstName: String,
-    lastName: String,
-    dateOfBirth: Date,
-    description: String
+    photo: { type: String },
+    firstName: { type: String },
+    lastName: { type: String },
+    dateOfBirth: { type: Date },
+    description: { type: String }
 });
 
 const Author = mongoose.model('authors', authorSchema);

@@ -1,13 +1,34 @@
 const express = require('express');
-const fs = require('fs');
 const Author = require('../models/author');
 const Book = require('../models/book');
 const authorRouter = express.Router();
-const multer=require('multer');
-const upload=multer({dest:'uploads/'});
-const storsge = multer.diskStorage({
-    
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, new Date().toISOString() + file.originalname);
+    }
 });
+
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
+}
+
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1024 * 1024 * 5
+    },
+    fileFilter: fileFilter
+});
+
 //get all authors
 authorRouter.get('/', (req, res) => {
     Author.find().then((data) => {
@@ -19,23 +40,25 @@ authorRouter.get('/', (req, res) => {
 });
 
 //add new author
-authorRouter.post('/',upload.single('photo') ,(req, res) => {
-
+authorRouter.post('/', upload.single('photo'), (req, res, next) => {
+    console.log(req.file);
     const author = new Author({
+        photo: req.file.path,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         dateOfBirth: req.body.dateOfBirth,
         description: req.body.description
     });
-    // if(fs.existsSync('../images/Chuck.jpg')){
-        // console.log("assas");
-        author.photo.data = fs.readFileSync('home/aya/hhh.png');
-        author.photo.contentType = 'image/png';
-    // };
-    author.save((err) => {
-        if (!err) {
-            res.send("saved");
-        }
+    author.save().then(result =>{
+        console.log(result);
+        res.status(201).json({
+            message: "Created author successfully",
+        });
+    }).catch(err=>{
+        console.log("err : "+err);
+        res.status(500).json({
+          error: err
+        });
     });
 });
 
