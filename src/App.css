@@ -1,11 +1,7 @@
-.App {
-  text-align: center;
-  background-color:#ebebde;
-  color: blue;
-}
-
-.TabContent{
-  background-color:#4e4e4e;
-  color: #ebebde;
+.App{
+  height: 100%;
+  width: 100%;
+  background-color:#474747;
+  position: absolute;
 }
 
