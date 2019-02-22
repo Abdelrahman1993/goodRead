@@ -1,4 +1,5 @@
 const express = require('express');
+const expressValidator=require('express-validator');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const keys = require('./configs/keys');
@@ -14,6 +15,7 @@ const uri = keys.mongoURI;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(expressValidator());
 app.use('/uploads', express.static('uploads'));
 mongoose.Promise = global.Promise;
 
