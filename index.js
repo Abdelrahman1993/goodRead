@@ -9,10 +9,14 @@ const userRouter = require('./routes/users');
 const bookRouter = require('./routes/book');
 const app = express();
 const PORT = process.env.PORT || 3000;
-mongoose.set('useCreateIndex', true);
 const uri = keys.mongoURI;
+const passport = require('passport');
+const passportJWT = require('passport-jwt');
+const User = mongoose.model('users');
 
 
+
+mongoose.set('useCreateIndex', true);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(expressValidator());
@@ -30,6 +34,38 @@ mongoose.connect(uri, {
     }
 });
 
+
+////////////////start passport middleware
+app.use(passport.initialize());
+
+const JwtStrategy = passportJWT.Strategy;
+const extractJWT = passportJWT.ExtractJwt;
+
+const opt = {
+    jwtFromRequest: extractJWT.fromAuthHeaderAsBearerToken(),
+    secretOrKey: keys.secretOrKey
+}
+
+passport.use(new JwtStrategy(opt, (payload, done)=>{
+
+    //console.log(payload);
+    User.findById(payload._id)
+        .then(user=>{
+            if(user){
+                return done(null, user);
+            }
+            else{
+                return done(null, false)
+            }
+        })
+        .catch(err=>{
+            console.log(err);
+        });
+
+}));
+
+
+///////////////end of passport middleware
 //categories router
 app.use('/categories', categoryRouter);
 

@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const keys = require('../configs/keys');
 const passport = require('passport');
 
+
 // Load User model
 const User = require('../models/user');
 
@@ -75,8 +76,9 @@ router.post('/login', (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
     
-    req.checkBody('email', 'Please enter your Email !').notEmpty();
-    req.checkBody('password', 'Please enter your Password !').notEmpty();
+    req.checkBody('email', 'Email is required !').notEmpty();
+    req.checkBody('email', 'Email is incorrect !').isEmail();
+    req.checkBody('password', 'Password is required !').notEmpty();
     
     const errors = req.validationErrors(req);
     if (errors) {
@@ -95,6 +97,7 @@ router.post('/login', (req, res) => {
                             //if user mached lets creat the token
                             //create the payload
                             const payload = {
+                                _id: user._id,
                                 firstName: user.firstName,
                                 lastName: user.lastName,
                                 userName: user.userName,
@@ -121,5 +124,25 @@ router.post('/login', (req, res) => {
 
    
 });
+
+
+// @route   GET /users/current
+// @desc    get the current user
+// @access  private
+router.get('/current', passport.authenticate('jwt', {session: false}), (req, res)=>{
+
+    const currentUser = {
+        _id: req.user._id,
+        firstName: req.user.firstName, 
+        lastName: req.user.lastName,
+        userName: req.user.userName,
+        email: req.user.email,
+        photo: req.user.photo,
+        isAdmin: req.user.isAdmin, 
+
+    }
+    res.json(currentUser);
+})
+ 
 
 module.exports = router;
