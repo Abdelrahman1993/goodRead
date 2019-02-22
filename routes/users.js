@@ -4,8 +4,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const keys = require('../configs/keys');
 const passport = require('passport');
-const { body, validationResult } = require('express-validator/check');
-const { sanitizeBody } = require('express-validator/filter');
 
 // Load User model
 const User = require('../models/user');
@@ -14,14 +12,9 @@ const User = require('../models/user');
 // @desc    signup user
 // @access  Public
 router.post('/signup', (req, res) => {
-    let firstName = req.body.firstName;
-    let lastName = req.body.lastName;
-    let userName = req.body.userName;
-    let email = req.body.email;
-    let password = req.body.password;
-
+ 
     req.checkBody('firstName', 'First name must be specified.').notEmpty();
-    req.checkBody('firstName', 'First name must be at least 3 character.').isLength({ min: 3, max: 8 });
+    req.checkBody('firstName','First name must be at least 3 character.').isLength({ min: 3, max: 8 });
     req.checkBody('lastName', 'Last name must be specified.').notEmpty();
     req.checkBody('lastName', 'Last name must be at least 3 character.').isLength({ min: 3, max: 8 });
 
@@ -81,7 +74,17 @@ router.post('/login', (req, res) => {
 
     const email = req.body.email;
     const password = req.body.password;
-    User.findOne({ email: email })
+    
+    req.checkBody('email', 'Please enter your Email !').notEmpty();
+    req.checkBody('password', 'Please enter your Password !').notEmpty();
+    
+    const errors = req.validationErrors(req);
+    if (errors) {
+        console.log("error in Log in page .!!");
+        res.json(errors);
+        return;
+    } else {
+        User.findOne({ email: email })
         .then(user => {
             if (!user) {
                 res.status(404).json({ email: 'email not found' });
@@ -114,6 +117,9 @@ router.post('/login', (req, res) => {
             }
         });
 
+    }
+
+   
 });
 
 module.exports = router;
