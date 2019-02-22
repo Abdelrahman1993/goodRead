@@ -3,7 +3,7 @@ import React from 'react';
 export default function Nav(props) {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="#">Home</a>
+        <a className="navbar-brand" href="localhost:3000">Home</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -11,13 +11,13 @@ export default function Nav(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <a className="nav-link" href="#">Categories <span className="sr-only">(current)</span></a>
+              <a className="nav-link" href="localhost:3000">Categories <span className="sr-only">(current)</span></a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Books</a>
+              <a className="nav-link" href="localhost:3000">Books</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled" href="#">Authors</a>
+              <a className="nav-link disabled" href="localhost:3000">Authors</a>
             </li>
           </ul>
           <form className="form-inline my-2 my-lg-0">
@@ -26,13 +26,16 @@ export default function Nav(props) {
           </form>
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <a className="nav-link" href="#"><i className="fas fa-user-circle"></i><span className="sr-only">(current)</span></a>
+              <a className="nav-link" href="localhost:3000">
+                <i className="fas fa-user-circle"></i>
+                <span className="sr-only">(current)</span>
+              </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">User 1</a>
+              <a className="nav-link" href="localhost:3000">User 1</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled" href="#"><i className="fas fa-sign-out-alt"></i></a>
+              <a className="nav-link disabled" href="localhost:3000"><i className="fas fa-sign-out-alt"></i></a>
             </li>
           </ul>
         </div>
