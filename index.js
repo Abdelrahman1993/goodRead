@@ -7,6 +7,7 @@ const autherRouter = require('./routes/authors');
 const categoryRouter = require('./routes/categories');
 const userRouter = require('./routes/users');
 const bookRouter = require('./routes/book');
+const adminRouter = require('./routes/admin');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const uri = keys.mongoURI;
@@ -76,6 +77,8 @@ app.use('/authors', autherRouter);
 app.use('/books', bookRouter);
 //users router
 app.use('/users', userRouter);
+//admin router
+app.use('/admin', adminRouter);
 //books router
 // >>>>>>> 0e2c477daa07a911c8a96dbac71f0c4c95441797
 app.use('/book', bookRouter);

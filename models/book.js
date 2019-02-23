@@ -12,11 +12,7 @@ const bookSchema = new mongoose.Schema({
         ref:"Author"
     },
     //rate:Number
-    bad: Number,
-    fair: Number,
-    good: Number,
-    veryGood: Number,
-    excellent: Number
+    rate: Number,
 });
 
 const Book = mongoose.model('books', bookSchema);
