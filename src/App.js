@@ -5,6 +5,8 @@ import {BrowserRouter,Route ,Link} from "react-router-dom";
 import AdminControl from "./components/AdminControl";
 
 
+
+
 class App extends React.Component {
 
   render() {
@@ -12,9 +14,9 @@ class App extends React.Component {
         <BrowserRouter>
             <div className='App container-fluid' >
                 {/*<Link to="/Admin">Admin</Link>*/}
+               {/*<Route path="/" exact component={book}/>*/}
               <Route path="/Admin" exact component={AdminLogin} />
               <Route path="/AdminControls" component={AdminControl}/>
-
             </div>
         </BrowserRouter>
     );

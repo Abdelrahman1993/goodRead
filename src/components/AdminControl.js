@@ -1,9 +1,7 @@
 import React , {Component} from 'react';
 import '../Styles/AdminPanel.css';
-import PopUp from './pop-up';
 import {
-    Button,
-    Col, Modal, ModalBody, ModalFooter, ModalHeader,
+    Col,
     Nav,
     NavItem,
     NavLink,
@@ -13,6 +11,10 @@ import {
     TabPane
 } from "reactstrap";
 import classnames from 'classnames';
+import Admin_Modal from "./AddCategoryForm";
+import AddCategoryForm from "./AddCategoryForm";
+import AddBookForm from "./AddBookForm";
+import AddAuthorForm from "./AddAuthorForm";
 
 class AdminControl extends Component {
 
@@ -39,23 +41,11 @@ class AdminControl extends Component {
     }
 
 
+
+
     render() {
         return (
             <>
-                <div>
-                    <Modal isOpen={this.state.modal} toggle={this.handle_modal} className={this.props.className}>
-                        <ModalHeader toggle={this.handle_modal}>Add Category</ModalHeader>
-                        <ModalBody>
-                            <h3>Add New Category</h3>
-                            <hr/>
-                            <input type="text" className="form-control" />
-                        </ModalBody>
-                        <ModalFooter>
-                            <Button color="primary" onClick={this.handle_modal}>Add Category</Button>{' '}
-                            <Button color="secondary" onClick={this.handle_modal}>Cancel</Button>
-                        </ModalFooter>
-                    </Modal>
-                </div>
             <div className='container-fluid'>
                 <div className="row">
                     <div className="col-lg-12 AdminPanelControls">
@@ -90,14 +80,16 @@ class AdminControl extends Component {
                             <Row>
                                 <Col sm="12">
 
-                                    <button onClick={this.handle_modal} className='btn btn-info offset-lg-10  offset-md-10  offset-sm-10  offset-xs-10 add_category'> Add Category +</button>
+                                    <AddCategoryForm cancel="cancel" title="Add Category"/>
+
                                 </Col>
                             </Row>
                         </TabPane>
                         <TabPane tabId="2">
                             <Row>
                                 <Col sm="12">
-                                    <button className='btn btn-info offset-lg-10  offset-md-10  offset-sm-10  offset-xs-10 add_category'> Add Book +</button>
+                                    {/*<button className='btn btn-info offset-lg-10  offset-md-10  offset-sm-10  offset-xs-10 add_category'> Add Book +</button>*/}
+                                    <AddBookForm cancel="cancel" title="Add Book"/>
                                     <Table>
                                         <thead>
                                         <tr>
@@ -134,7 +126,7 @@ class AdminControl extends Component {
                         <TabPane tabId="3">
                             <Row>
                                 <Col sm="12">
-                                    <button className='btn btn-info offset-lg-10  offset-md-10  offset-sm-10  offset-xs-10 add_category'> Add Author +</button>
+                                    <AddAuthorForm first="First name" second="Second name" cancel="cancel" title="Add Author"/>
                                 </Col>
                             </Row>
                         </TabPane>
