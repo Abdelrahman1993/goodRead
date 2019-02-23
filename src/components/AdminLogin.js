@@ -8,7 +8,7 @@ class AdminLogin extends Component {
 
               <div className='container-fluid'>
                   <div className="row">
-                      <div className=' offset-lg-3 col-lg-6 AdminPanelSection '>
+                          <div className=' offset-lg-3 col-lg-6 AdminPanelSection '>
                           <h3>Admin Panel</h3>
                           <hr/>
                           <form>
