@@ -1,7 +1,9 @@
 const express = require('express');
 const Book = require('../models/book');
 const Category = require('../models/category');
+// <<<<<<< HEAD
 const author = require('../models/author');
+const Author = require('../models/author');
 const bookRouter = express.Router();
 
 const multer = require('multer');
@@ -47,13 +49,23 @@ bookRouter.get('/', (req, res) => {
 
 //add new book
 bookRouter.post('/', upload.single('photo'), (req, res) => {
-    const book = new Book({
-        photo: req.file.path,
-        name: req.body.name,
-        categoryId: req.body.categoryId,
-        authorId: req.body.authorId,
-        rate: req.body.rate
-    });
+    // Category.findOne({ categoryName: req.body.categoryName }).then(category => {
+    //     if (!category) {
+    //         return res.status(400).json({ categoryName: 'this category dose not exiest' });
+    //     }
+    //
+    //     Author.findOne({ authorName: req.body.authorName }).then(author => {
+    //         if (!author) {
+    //             return res.status(400).json({ email: 'this Author dose not exiest' });
+    //         }
+        const book = new Book({
+            photo: req.file.path,
+            name: req.body.name,
+            categoryName: req.body.categoryName,
+            authorName: req.body.authorName,
+            rate: req.body.rate
+        });
+
     book.save().then(result => {
         console.log(result);
         res.status(201).json({
@@ -65,8 +77,10 @@ bookRouter.post('/', upload.single('photo'), (req, res) => {
             error: err
         });
     });
-});
+        // });
+    // });
 
+});
 //get book by id
 bookRouter.get('/:id', (req, res) => {
     Book.findById(req.params.id).populate('authorId').populate('categoryId').then((data) => {

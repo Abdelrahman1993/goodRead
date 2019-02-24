@@ -41,6 +41,7 @@ authorRouter.get('/', (req, res) => {
 
 //add new author
 authorRouter.post('/', upload.single('photo'), (req, res, next) => {
+// <<<<<<< HEAD
     console.log(req.file);
     const author = new Author({
         photo: req.file.path,
@@ -60,6 +61,42 @@ authorRouter.post('/', upload.single('photo'), (req, res, next) => {
             error: err
         });
     });
+
+
+    req.checkBody('firstName', 'firstName must be specified.').notEmpty();
+    req.checkBody('firstName', 'firstName mustn\'t be contain special charachter .').isAlphanumeric();
+    req.checkBody('firstName', 'firstName mustn\'t be contain numbers .').isNumeric();
+    //=======================
+    req.checkBody('lastName', 'lastName must be specified.').notEmpty();
+    req.checkBody('lastName', 'lastName mustn\'t be contain special charachter .').isAlphanumeric();
+    req.checkBody('lastName', 'lastName mustn\'t be contain numbers .').isNumeric();
+    //=======================
+    Author.findOne({name: req.body.name}).then(author => {
+        if (author) {
+            return res.status(400).json({name: 'author already exists'});
+        } else {
+
+            console.log(req.file);
+            const author = new Author({
+                photo: req.file.path,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                dateOfBirth: req.body.dateOfBirth,
+                description: req.body.description
+            });
+            author.save().then(result => {
+                console.log(result);
+                res.status(201).json({
+                    message: "Created author successfully",
+                });
+            }).catch(err => {
+                console.log("err : " + err);
+                res.status(500).json({
+                    error: err
+                });
+            });
+        }
+// >>>>>>> 268df090572f0b779e8e9a57369cfa6860274727
 });
 
 //get author by id

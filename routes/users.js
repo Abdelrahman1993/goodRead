@@ -66,7 +66,8 @@ router.post('/signup', (req, res) => {
                     lastName: req.body.lastName,
                     userName: req.body.userName,
                     email: req.body.email,
-                    password: req.body.password
+                    password: req.body.password,
+                    books:[{}]
                 });
 
                 bcrypt.genSalt(10, (err, salt) => {
@@ -158,22 +159,35 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
         email: req.user.email,
         photo: req.user.photo,
         isAdmin: req.user.isAdmin,
+        // books:[{}],
 
     }
     res.json(currentUser);
 })
 
-router.get('/current/books', passport.authenticate('jwt', { session: false }),
-    (req, res) => {
+router.post('/current/rate',passport.authenticate('jwt', { session: false }),(req, res) => {
+    req.user.selectedbook = {
+        photo:req.body.photo,
+        name:req.body.name,
+        category:req.body.category,
+        author:req.body.author,
+        rate:1,
+        shelve:req.body.shelve,
+    }
+        console.log("1");
+        console.log(req.user.Books);
+        console.log("2");
 
-        // db.inventory.find( { status: "A" }, { item: 1, status: 1, _id: 0 } )
+    // console.log("here filter")
+    // console.log(nameBook.name)
+        const isBook = req.user.Books.filter(nameBook => nameBook.name === req.body.name);
 
-        books.find().then((data) => {
-            res.json(data);
-        }).catch((err) => {
-            res.send('error in getting data');
-        })
+        if(isBook.length === 0){
+            console.log(3);
+            req.user.Books.push(req.user.selectedbook)
+        }else{
 
+        }
     });
 // authorRouter.get('/', (req, res) => {
 //     Author.find().then((data) => {

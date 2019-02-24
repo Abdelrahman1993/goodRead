@@ -13,8 +13,22 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: "Password is required" },
     photo: String,
     isAdmin: {
-        type: Boolean, default: false
-    }
+        type: Boolean,
+        default: false
+    },
+    Books:[{}],
+
+    selectedbook :
+        {
+            photo:String,
+            name:String,
+            category:String,
+            author:String,
+            rate:{type : Number,default: null},
+            shelve: {type: String,default : null}
+        }
+        // ,enum["Reading","wantToReading","read"]
+
 });
 
 
