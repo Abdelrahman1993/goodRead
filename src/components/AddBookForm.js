@@ -1,5 +1,17 @@
 import React , {Component} from 'react';
-import {Button, Form, FormGroup, FormText, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader} from "reactstrap";
+import {
+    Button,
+    Form,
+    FormGroup,
+    FormText,
+    Input,
+    Label,
+    Modal,
+    ModalBody,
+    ModalFooter,
+    ModalHeader,
+    Table
+} from "reactstrap";
 
 class AddBookForm extends Component{
 
@@ -7,19 +19,32 @@ class AddBookForm extends Component{
         super(props);
         this.state={
 
-            modalIsOpen: false
+            modalIsOpen: false,
+            books : [{id:1 , photo:"photo",name:"hesham",cat:"the cat",author:"no one"}],
+            newBook:''
         };
         this.handle_modal = this.handle_modal.bind(this);
-
     }
-
     handle_modal() {
         this.setState(prevState => ({
             modal: !prevState.modal
         }));
     }
+    handle_addBook =()=>{
+        const books = [...this.state.books];
+        books.push({
+            id:this.state.newBook,
+            photo:this.state.newBook,
+            name:this.state.newBook,
+            cat:this.state.newBook,
+            author: this.state.newBook
+        });
+        this.setState({
+            books,
+            newBook :'',
 
-
+        });
+    }
     render() {
         return (
             <div>
@@ -57,16 +82,44 @@ class AddBookForm extends Component{
                                 <Input type="file" name="file" id="exampleFile" />
                             </FormGroup>
                         </Form>
-
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={this.handle_modal}>{this.props.title}</Button>{' '}
+                        <Button color="primary" onClick={this.handle_modal} onClick={this.handle_addBook}>{this.props.title}</Button>{' '}
                         <Button color="secondary" onClick={this.handle_modal}>{this.props.cancel}</Button>
                     </ModalFooter>
-                </Modal>
 
+
+                </Modal>
+                <Table>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Photo</th>
+                        <th>Name</th>
+                        <th>CategoryID</th>
+                        <th>AuthorID</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+
+                    <thead>
+                    {this.state.books.map((book , index) =>
+                        <tr>
+                            <th>{index+1}</th>
+                            <th key={index}>
+                                {book.photo}
+                            </th>
+                            <th>{book.name}</th>
+                            <th>{book.cat}</th>
+                            <th>{book.author}</th>
+                            <th>
+                                <button type="button" className="btn btn-info">Edit</button> {" "}
+                                <button type="button" className="btn btn-danger">Delete</button> </th>
+                        </tr>)}
+
+                    </thead>
+                </Table>
             </div>);
     }
 }
-
 export default AddBookForm;

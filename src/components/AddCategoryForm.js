@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-import {Button, Form, FormGroup, Input, Label, ModalBody, ModalFooter, ModalHeader} from "reactstrap";
+import {Button, Col, Form, FormGroup, Input, Label, ModalBody, ModalFooter, ModalHeader, Table} from "reactstrap";
 import {Modal} from "reactstrap"
 
 class AddCategoryForm extends Component {
@@ -8,7 +8,10 @@ class AddCategoryForm extends Component {
         super(props);
         this.state={
 
-            modalIsOpen: false
+            modalIsOpen: false,
+            newCategory: "",
+            categories : [{text:'Mango'} , {text:'chicken'}],
+
         };
         this.handle_modal = this.handle_modal.bind(this);
 
@@ -20,7 +23,28 @@ class AddCategoryForm extends Component {
         }));
     }
 
+    handle_updateCategory =(event)=>{
+        this.setState({
+            newCategory :event.target.value
+        });
+    }
+
+    handle_addCategory =()=>{
+        const categories = [...this.state.categories];
+        categories.push({
+            text:this.state.newCategory,
+
+        });
+        this.setState({
+            categories,
+            newCategory : "",
+        });
+
+    }
+
     render() {
+
+
         return (
             <div>
                 <button onClick={this.handle_modal} className='btn btn-info offset-lg-10  offset-md-10  offset-sm-10  offset-xs-10 add_category'>{this.props.title} +</button>
@@ -28,16 +52,38 @@ class AddCategoryForm extends Component {
                 <ModalHeader toggle={this.handle_modal}>{this.props.title}</ModalHeader>
                 <ModalBody>
                     <FormGroup>
-                        <Input type="name" name="name" id="name" placeholder="Add Category" />
+                        <Input type="name" name="name" id="name" placeholder="Add Category" value={this.state.newCategory} onChange={this.handle_updateCategory} />
                     </FormGroup>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" onClick={this.handle_modal}>{this.props.title}</Button>{' '}
+                    <Button color="primary" onClick={this.handle_modal} onClick={this.handle_addCategory}>{this.props.title}</Button>{' '}
                     <Button color="secondary" onClick={this.handle_modal}>{this.props.cancel}</Button>
                 </ModalFooter>
             </Modal>
+                <Table>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Category name</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <thead>
+                    {this.state.categories.map((category , index) =>
+                        <tr>
+                            <th>{index+1}</th>
+                            <th key={index}>
+                                {category.text}
+                            </th>
+                            <th>
+                                <button type="button" className="btn btn-info">Edit</button> {" "}
+                                <button type="button" className="btn btn-danger">Delete</button> </th>
+                        </tr>)}
+                    </thead>
+                </Table>
+        </div>
 
-        </div>);
+        );
     }
 }
 export default AddCategoryForm;

@@ -7,19 +7,15 @@ class AddAuthorForm extends Component {
     constructor(props) {
         super(props);
         this.state={
-
             modalIsOpen: false
         };
         this.handle_modal = this.handle_modal.bind(this);
-
     }
-
     handle_modal() {
         this.setState(prevState => ({
             modal: !prevState.modal
         }));
     }
-
     render() {
         return (
             <div>
@@ -34,7 +30,6 @@ class AddAuthorForm extends Component {
                             </FormGroup>
                             <FormGroup>
                                 <Label for="name">{this.props.second}</Label>
-
                                 <Input type="name" name="lastname" id="lname" placeholder="Last Name" />
                             </FormGroup>
                             <FormGroup>
@@ -72,10 +67,7 @@ class AddAuthorForm extends Component {
                         <Button color="secondary" onClick={this.handle_modal}>{this.props.cancel}</Button>
                     </ModalFooter>
                 </Modal>
-
             </div>);
     }
-
 }
-
 export default AddAuthorForm;
