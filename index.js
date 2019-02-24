@@ -1,21 +1,21 @@
 const express = require('express');
-const expressValidator=require('express-validator');
+const expressValidator = require('express-validator');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const keys = require('./configs/keys');
 const autherRouter = require('./routes/authors');
 const categoryRouter = require('./routes/categories');
+const reviewRouter = require('./routes/review');
 const userRouter = require('./routes/users');
 const bookRouter = require('./routes/book');
+const userBookRouter = require('./routes/userBook');
 const adminRouter = require('./routes/admin');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 const uri = keys.mongoURI;
 const passport = require('passport');
 const passportJWT = require('passport-jwt');
 const User = mongoose.model('users');
-
-
 
 mongoose.set('useCreateIndex', true);
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -32,6 +32,8 @@ mongoose.connect(uri, {
 }, (err) => {
     if (!err) {
         console.log("started mongodb connection");
+    } else {
+        console.log(err);
     }
 });
 
@@ -47,19 +49,19 @@ const opt = {
     secretOrKey: keys.secretOrKey
 }
 
-passport.use(new JwtStrategy(opt, (payload, done)=>{
+passport.use(new JwtStrategy(opt, (payload, done) => {
 
     //console.log(payload);
     User.findById(payload._id)
-        .then(user=>{
-            if(user){
+        .then(user => {
+            if (user) {
                 return done(null, user);
             }
-            else{
+            else {
                 return done(null, false)
             }
         })
-        .catch(err=>{
+        .catch(err => {
             console.log(err);
         });
 
@@ -75,10 +77,14 @@ app.use('/authors', autherRouter);
 
 // books router
 app.use('/books', bookRouter);
+// reviews router
+app.use('/review', reviewRouter);
 //users router
 app.use('/users', userRouter);
 //admin router
 app.use('/admin', adminRouter);
+
+app.use('/userBook',userBookRouter);
 //books router
 // >>>>>>> 0e2c477daa07a911c8a96dbac71f0c4c95441797
 app.use('/book', bookRouter);

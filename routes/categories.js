@@ -52,8 +52,6 @@ categoryRouter.patch('/:id', (req, res) => {
 
 //delete category by id
 categoryRouter.delete('/:id', (req, res) => {
-
-
     Category.findByIdAndRemove(req.params.id).then(() => {
         Book.findByIdAndRemove({ categoryId: req.params.id }).then(() => {
             res.json({msg: 'deleted'});

@@ -49,15 +49,15 @@ authorRouter.post('/', upload.single('photo'), (req, res, next) => {
         dateOfBirth: req.body.dateOfBirth,
         description: req.body.description
     });
-    author.save().then(result =>{
+    author.save().then(result => {
         console.log(result);
         res.status(201).json({
             message: "Created author successfully",
         });
-    }).catch(err=>{
-        console.log("err : "+err);
+    }).catch(err => {
+        console.log("err : " + err);
         res.status(500).json({
-          error: err
+            error: err
         });
     });
 });
@@ -71,9 +71,9 @@ authorRouter.get('/:id', (req, res) => {
     });
 });
 // update author by id
-authorRouter.put('/:id', (req, res) => {
+authorRouter.put('/:id',upload.single('photo'), (req, res) => {
     Author.findOneAndUpdate(req.params.id, {
-        photo: req.body.photo,
+        photo: req.file.path,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         dateOfBirth: req.body.dateOfBirth,
@@ -99,7 +99,7 @@ authorRouter.delete('/:id', (req, res) => {
 //get books of specific author 
 authorRouter.get('/:id/books', (req, res) => {
     Book.find({ authorId: req.params.id }).then((books) => {
-        res.send(books);
+        res.json(books);
     }).catch((err) => {
         res.send('error in getting data ' + err);
     });

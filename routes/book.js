@@ -1,6 +1,7 @@
 const express = require('express');
 const Book = require('../models/book');
-const Category =require('../models/category');
+const Category = require('../models/category');
+const author = require('../models/author');
 const bookRouter = express.Router();
 
 const multer = require('multer');
@@ -31,11 +32,16 @@ const upload = multer({
 
 //get all books
 bookRouter.get('/', (req, res) => {
-    Book.find().then((data) => {
-        res.send(data);
-    }).catch((err) => {
-        res.json({ msg: err });
-    });
+    Book.find().populate('authorId').populate('categoryId').then((data) => {
+        //    const book_author=[];
+        //     data.forEach(authorData=>{
+        //         book_author.push(authorData.authorId.firstName+" "+authorData.authorId.lastName);
+        //     });
+        res.json(data);
+        console.log(data);
+    }).catch(err => {
+        console.log(err);
+    })
 
 });
 
@@ -63,7 +69,7 @@ bookRouter.post('/', upload.single('photo'), (req, res) => {
 
 //get book by id
 bookRouter.get('/:id', (req, res) => {
-    Book.findById(req.params.id).then((data) => {
+    Book.findById(req.params.id).populate('authorId').populate('categoryId').then((data) => {
         res.json(data);
     }).catch((err) => {
         res.json({ msg: err });
@@ -71,9 +77,9 @@ bookRouter.get('/:id', (req, res) => {
 });
 
 // update book by id
-bookRouter.put('/:id', (req, res) => {
+bookRouter.put('/:id', upload.single('photo'), (req, res) => {
     Book.findOneAndUpdate(req.params.id, {
-        photo: req.body.photo,
+        photo: req.file.path,
         name: req.body.name,
         categoryId: req.body.categoryId,
         authorId: req.body.authorId,
@@ -91,15 +97,6 @@ bookRouter.delete('/:id', (req, res) => {
     Book.findByIdAndRemove(req.params.id).then((data) => {
         res.json(data);
 
-    }).catch((err) => {
-        res.json({ msg: err });
-    });
-});
-
-//get books of specific user 
-bookRouter.get('/:id/user', (req, res) => {
-    Book.find({ userId: req.params.id }).then((data) => {
-        res.json(data);
     }).catch((err) => {
         res.json({ msg: err });
     });

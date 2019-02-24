@@ -13,8 +13,7 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: "Password is required" },
     photo: String,
     isAdmin: {
-        type: Boolean,
-        default: false
+        type: Boolean, default: false
     }
 });
 

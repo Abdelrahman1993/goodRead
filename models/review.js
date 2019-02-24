@@ -4,11 +4,11 @@ const reviewSchema = new mongoose.Schema({
     body: String,
     userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
+        ref: "users"
     },
     bookId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Book"
+        ref: "books"
     }
 });
 
