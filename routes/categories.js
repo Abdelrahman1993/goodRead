@@ -17,16 +17,26 @@ categoryRouter.get('/', (req, res) => {
 
 //add new category
 categoryRouter.post('/', (req, res) => {
-    const category = new Category({
-        name: req.body.name
-    });
-    category.save((err) => {
-        if (!err) {
-            res.json({msg: 'saved'});
-        }else{
-            res.json({msg: err});
-        }
+    req.checkBody('name', 'name must be specified.').notEmpty();
+    req.checkBody('name', 'name mustn\'t be contain special charachter .').isAlphanumeric();
+    req.checkBody('name', 'name mustn\'t be contain numbers .').isNumeric();
 
+    Category.findOne({name: req.body.name}).then(catego => {
+        if (catego) {
+            return res.status(400).json({name: 'category already exists'});
+        } else {
+            const category = new Category({
+                name: req.body.name
+            });
+            category.save((err) => {
+                if (!err) {
+                    res.json({msg: 'saved'});
+                } else {
+                    res.json({msg: err});
+                }
+
+            });
+        }
     });
 });
 

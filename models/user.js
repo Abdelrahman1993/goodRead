@@ -15,7 +15,20 @@ const userSchema = new mongoose.Schema({
     isAdmin: {
         type: Boolean,
         default: false
-    }
+    },
+    Books:[{}],
+
+    selectedbook :
+        {
+            photo:String,
+            name:String,
+            category:String,
+            author:String,
+            rate:{type : Number,default: null},
+            shelve: {type: String,default : null}
+        }
+        // ,enum["Reading","wantToReading","read"]
+
 });
 
 
