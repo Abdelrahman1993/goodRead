@@ -1,5 +1,6 @@
 const express = require('express');
 const Book = require('../models/book');
+const Category =require('../models/category');
 const bookRouter = express.Router();
 
 const multer = require('multer');
@@ -31,7 +32,7 @@ const upload = multer({
 //get all books
 bookRouter.get('/', (req, res) => {
     Book.find().then((data) => {
-        res.json(data);
+        res.send(data);
     }).catch((err) => {
         res.json({ msg: err });
     });
