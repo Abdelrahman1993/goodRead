@@ -1,14 +1,11 @@
 const mongoose = require('mongoose');
 
 const bookSchema = new mongoose.Schema({
-authorId: { type: mongoose.Schema.Types.ObjectId, ref: 'authors' },
-
     photo:String,
     name : String,
-    categoryName: String,
-    authorName : String,
-    //rate:Number
-    rate: Number,
+    categoryId: {type: mongoose.Schema.Types.ObjectId, ref: 'categories'},
+    authorId: { type: mongoose.Schema.Types.ObjectId, ref: 'authors' },   
+    rate: Number
 });
 
 const Book = mongoose.model('books', bookSchema);

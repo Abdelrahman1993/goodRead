@@ -16,18 +16,18 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    Books:[{}],
+    Books: [{}],
 
-    selectedbook :
-        {
-            photo:String,
-            name:String,
-            category:String,
-            author:String,
-            rate:{type : Number,default: null},
-            shelve: {type: String,default : null}
-        }
-        // ,enum["Reading","wantToReading","read"]
+    selectedbook:
+    {
+        photo: String,
+        name: String,
+        category: String,
+        author: String,
+        rate: { type: Number, default: null },
+        shelve: { type: String, default: null }
+    }
+    // ,enum["Reading","wantToReading","read"]
 
 });
 

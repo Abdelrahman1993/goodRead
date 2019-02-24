@@ -49,15 +49,15 @@ bookRouter.get('/', (req, res) => {
 
 //add new book
 bookRouter.post('/', upload.single('photo'), (req, res) => {
-    // Category.findOne({ categoryName: req.body.categoryName }).then(category => {
-    //     if (!category) {
-    //         return res.status(400).json({ categoryName: 'this category dose not exiest' });
-    //     }
-    //
-    //     Author.findOne({ authorName: req.body.authorName }).then(author => {
-    //         if (!author) {
-    //             return res.status(400).json({ email: 'this Author dose not exiest' });
-    //         }
+    Category.findOne({ categoryName: req.body.categoryName }).then(category => {
+        if (!category) {
+            return res.status(400).json({ categoryName: 'this category dose not exiest' });
+        }
+    
+        Author.findOne({ authorName: req.body.authorName }).then(author => {
+            if (!author) {
+                return res.status(400).json({ email: 'this Author dose not exiest' });
+            }
         const book = new Book({
             photo: req.file.path,
             name: req.body.name,
@@ -77,8 +77,8 @@ bookRouter.post('/', upload.single('photo'), (req, res) => {
             error: err
         });
     });
-        // });
-    // });
+        });
+    });
 
 });
 //get book by id
