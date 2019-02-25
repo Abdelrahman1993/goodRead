@@ -39,12 +39,9 @@ const upload = multer({
 //get all books
 bookRouter.get('/', (req, res) => {
     Book.find().populate('authorId').populate('categoryId').then((data) => {
-        //    const book_author=[];
-        //     data.forEach(authorData=>{
-        //         book_author.push(authorData.authorId.firstName+" "+authorData.authorId.lastName);
-        //     });
+
         res.json(data);
-        console.log(data);
+      
     }).catch(err => {
         console.log(err);
     })
