@@ -15,6 +15,8 @@ import Admin_Modal from "./AddCategoryForm";
 import AddCategoryForm from "./AddCategoryForm";
 import AddBookForm from "./AddBookForm";
 import AddAuthorForm from "./AddAuthorForm";
+import Cookies from 'universal-cookie';
+
 
 class AdminControl extends Component {
     constructor(props) {
@@ -32,6 +34,14 @@ class AdminControl extends Component {
             });
         }
     }
+
+    componentDidMount(){
+        let cookies = new Cookies();
+        if (!cookies.get('token')) {
+            window.location = "http://localhost:3000/admin";
+        }
+    }
+
     handle_modal() {
         this.setState(prevState => ({
             modal: !prevState.modal

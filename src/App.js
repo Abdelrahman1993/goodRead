@@ -7,15 +7,11 @@ import popular from "./components/popular";
 import footer from "./components/footer";
 import author_books from "./components/author_books";
 
-
 class App extends React.Component {
-
   render() {
     return (
         <BrowserRouter>
             <div className='App container-fluid' >
-                {/*<Link to="/Admin">Admin</Link>*/}
-               {/*<Route path="/" exact component={author_books}/>*/}
               <Route path="/Admin" exact component={AdminLogin} />
               <Route path="/AdminControls" component={AdminControl}/>
             </div>
