@@ -85,9 +85,7 @@ app.use('/users', userRouter);
 app.use('/admin', adminRouter);
 
 app.use('/userBook',userBookRouter);
-//books router
-// >>>>>>> 0e2c477daa07a911c8a96dbac71f0c4c95441797
-app.use('/book', bookRouter);
+
 
 app.listen(PORT, (req, res) => {
     console.log("server running on port: " + PORT);
