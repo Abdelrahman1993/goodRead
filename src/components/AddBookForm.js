@@ -158,7 +158,7 @@ class AddBookForm extends Component{
                         <tr>
                             <th>{index+1}</th>
                             <th key={index}>
-                                <img src={book.photo} width="50" height="50" alt="fuck you"/>
+                                <img src={book.photo} width="50" height="50" alt="error image"/>
                             </th>
                             <th>{book.name}</th>
                             <th>{book.categoryId.name}</th>
