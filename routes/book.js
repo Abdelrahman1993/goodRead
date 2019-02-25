@@ -1,12 +1,16 @@
 const express = require('express');
 const Book = require('../models/book');
 const Category = require('../models/category');
-// <<<<<<< HEAD
-const author = require('../models/author');
 const Author = require('../models/author');
 const bookRouter = express.Router();
 
 const multer = require('multer');
+
+const passport = require('passport');
+
+
+
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './uploads/');
@@ -48,7 +52,12 @@ bookRouter.get('/', (req, res) => {
 });
 
 //add new book
-bookRouter.post('/', upload.single('photo'), (req, res) => {
+bookRouter.post('/', passport.authenticate('jwt', { session: false }), upload.single('photo'), (req, res) => {
+
+    if(req.user.isAdmin != true){
+        return res.status(400).json({ msg: 'UnAthorized Access' });
+    }
+
     Category.findOne({ categoryName: req.body.categoryName }).then(category => {
         if (!category) {
             return res.status(400).json({ categoryName: 'this category dose not exiest' });
@@ -91,7 +100,12 @@ bookRouter.get('/:id', (req, res) => {
 });
 
 // update book by id
-bookRouter.put('/:id', upload.single('photo'), (req, res) => {
+bookRouter.put('/:id', passport.authenticate('jwt', { session: false }), upload.single('photo'), (req, res) => {
+
+    if(req.user.isAdmin != true){
+        return res.status(400).json({ msg: 'UnAthorized Access' });
+    }
+
     Book.findOneAndUpdate(req.params.id, {
         photo: req.file.path,
         name: req.body.name,
@@ -107,7 +121,12 @@ bookRouter.put('/:id', upload.single('photo'), (req, res) => {
 });
 
 //delete book by id
-bookRouter.delete('/:id', (req, res) => {
+bookRouter.delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+
+    if(req.user.isAdmin != true){
+        return res.status(400).json({ msg: 'UnAthorized Access' });
+    }
+
     Book.findByIdAndRemove(req.params.id).then((data) => {
         res.json(data);
 
