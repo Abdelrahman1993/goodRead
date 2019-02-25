@@ -44,7 +44,6 @@ class AddCategoryForm extends Component {
 
     render() {
 
-
         return (
             <div>
                 <button onClick={this.handle_modal} className='btn btn-info offset-lg-10  offset-md-10  offset-sm-10  offset-xs-10 add_category'>{this.props.title} +</button>

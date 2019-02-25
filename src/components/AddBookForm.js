@@ -21,7 +21,8 @@ class AddBookForm extends Component{
 
             modalIsOpen: false,
             books : [{id:1 , photo:"photo",name:"hesham",cat:"the cat",author:"no one"}],
-            newBook:''
+            newBook:{id: 2, photo: '', name: '', cat: '', author: '' }
+
         };
         this.handle_modal = this.handle_modal.bind(this);
     }
@@ -30,19 +31,37 @@ class AddBookForm extends Component{
             modal: !prevState.modal
         }));
     }
+
+    handle_updateBook =(event)=>{
+        if(event.target.name === "name") {
+            this.setState({
+                newBook: {...this.state.newBook, name: event.target.value,}
+            });
+        } else if(event.target.name === "select") {
+            this.setState({
+                newBook: {...this.state.newBook, cat: event.target.value,}
+            });
+        } else if(event.target.name === "select1") {
+            this.setState({
+                newBook: {...this.state.newBook, author: event.target.value,}
+            });
+        } else if(event.target.name === "file") {
+            console.log(event.target.value);
+            let path = event.target.value.split('\\');
+            console.log(path);
+            this.setState({
+                newBook: {...this.state.newBook, photo: path[2],}
+            });
+        }
+
+    }
+
     handle_addBook =()=>{
-        const books = [...this.state.books];
-        books.push({
-            id:this.state.newBook,
-            photo:this.state.newBook,
-            name:this.state.newBook,
-            cat:this.state.newBook,
-            author: this.state.newBook
-        });
+        let books = [...this.state.books];
+        books.push(this.state.newBook);
         this.setState({
             books,
             newBook :'',
-
         });
     }
     render() {
@@ -55,11 +74,11 @@ class AddBookForm extends Component{
                         <Form>
                             <FormGroup>
                                 <Label for="name">Book name</Label>
-                                <Input type="name" name="name" id="name" placeholder="Book name" />
+                                <Input type="name" name="name" id="name" placeholder="Book name" value={this.state.newBook.name} onChange={this.handle_updateBook}/>
                             </FormGroup>
                             <FormGroup>
                                 <Label for="exampleSelect">Select Category</Label>
-                                <Input type="select" name="select" id="exampleSelect">
+                                <Input type="select" name="select" id="exampleSelect" value={this.state.newBook.cat} onChange={this.handle_updateBook}>
                                     <option>ahmed</option>
                                     <option>mohamed</option>
                                     <option>hesham</option>
@@ -69,7 +88,7 @@ class AddBookForm extends Component{
                             </FormGroup>
                             <FormGroup>
                                 <Label for="exampleSelect">Select Author</Label>
-                                <Input type="select" name="select" id="exampleSelect">
+                                <Input type="select" name="select1" id="exampleSelect" value={this.state.newBook.author} onChange={this.handle_updateBook}>
                                     <option>ahmed</option>
                                     <option>mohamed</option>
                                     <option>hesham</option>
@@ -79,7 +98,7 @@ class AddBookForm extends Component{
                             </FormGroup>
                             <FormGroup>
                                 <Label for="exampleFile">Upload Image</Label>
-                                <Input type="file" name="file" id="exampleFile" />
+                                <Input type="file" name="file" id="exampleFile" onChange={this.handle_updateBook}/>
                             </FormGroup>
                         </Form>
                     </ModalBody>
@@ -107,7 +126,7 @@ class AddBookForm extends Component{
                         <tr>
                             <th>{index+1}</th>
                             <th key={index}>
-                                {book.photo}
+                                <img src={book.photo} alt="test"/>
                             </th>
                             <th>{book.name}</th>
                             <th>{book.cat}</th>

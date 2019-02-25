@@ -1,7 +1,35 @@
 .App{
   height: 100%;
   width: 100%;
-
   position: absolute;
+
+
 }
 
+.UsrLogin{
+    margin-top: 0.5%;
+    height: 100%;
+    width: 100%;
+    background-color: #f9f8f4;
+
+}
+
+.SignUp{
+    margin-top: 1%;
+    height: 100%;
+    width: 100%;
+    background-color:#f9f8f4;
+    border-left: 3px solid dodgerblue;
+    color: dodgerblue;
+
+
+}
+
+.foot{
+    margin-top: 3.5%;
+    height: 100%;
+    width: 100%;
+    background-color:#f9f8f4;
+
+
+}
