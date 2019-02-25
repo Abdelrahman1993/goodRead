@@ -6,6 +6,8 @@ import AdminControl from "./components/AdminControl";
 import UsrLogin from "./components/UsrLogin";
 import UsrSignUp from "./components/UsrSignUp";
 import Footer from "./components/Footer";
+import Nav from "./components/Nav";
+import SideBar from "./components/SideBar";
 
 
 class App extends React.Component {
@@ -16,9 +18,9 @@ class App extends React.Component {
             <div  >
                 {/*<Link to="/Admin">Admin</Link>*/}
 
-               <Route path="/" exact component={UsrLogin}/>
-                <Route path="/" exact component={UsrSignUp}/>
-                <Route path="/" exact component={Footer}/>
+               <Route path="/" exact component={Nav}/>
+                {/*<Route path="/" exact component={UsrSignUp}/>*/}
+                <Route path="/" exact component={SideBar}/>
               <Route path="/Admin" exact component={AdminLogin} />
               <Route path="/AdminControls" component={AdminControl}/>
             </div>

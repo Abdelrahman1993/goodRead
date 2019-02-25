@@ -59,7 +59,7 @@ class AddCategoryForm extends Component {
                     <Button color="secondary" onClick={this.handle_modal}>{this.props.cancel}</Button>
                 </ModalFooter>
             </Modal>
-                <Table>
+                    <Table>
                     <thead>
                     <tr>
                         <th>ID</th>

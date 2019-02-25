@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-import {Button, Form, FormGroup, Input, Label, ModalBody, ModalFooter, ModalHeader} from "reactstrap";
+import {Button, Form, FormGroup, Input, Label, ModalBody, ModalFooter, ModalHeader, Table} from "reactstrap";
 import {Modal} from "reactstrap"
 
 class AddAuthorForm extends Component {
@@ -67,6 +67,21 @@ class AddAuthorForm extends Component {
                         <Button color="secondary" onClick={this.handle_modal}>{this.props.cancel}</Button>
                     </ModalFooter>
                 </Modal>
+
+                <Table>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Photo</th>
+                        <th>First Name</th>
+                        <th>Date of Birth</th>
+                        <th>Actions</th>
+
+                    </tr>
+                    </thead>
+                </Table>
+
+
             </div>);
     }
 }

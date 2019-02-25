@@ -3,7 +3,6 @@
   width: 100%;
   position: absolute;
 
-
 }
 
 .UsrLogin{
@@ -24,12 +23,24 @@
 
 
 }
+.Nav {background-color:dodgerblue;
+}
+
+.moveinput{margin-left: 3% ;width: 35em}
+.moveAvata{margin-right: 5%}
 
 .foot{
     margin-top: 3.5%;
     height: 100%;
     width: 100%;
     background-color:#f9f8f4;
+}
 
-
+.sidbar{
+    background-color: greenyellow;
+    width: 20%;
+    font-size: 18px;
+    margin-left: 1%;
+    border-right: 3px solid dodgerblue;
+    padding-bottom: 10px;
 }
