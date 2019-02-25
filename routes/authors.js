@@ -41,63 +41,59 @@ authorRouter.get('/', (req, res) => {
 
 //add new author
 authorRouter.post('/', upload.single('photo'), (req, res, next) => {
-    console.log(req.file);
-    const author = new Author({
-        photo: req.file.path,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        dateOfBirth: req.body.dateOfBirth,
-        description: req.body.description
-    });
-    author.save().then(result => {
-        console.log(result);
-        res.status(201).json({
-            message: "Created author successfully",
-        });
-    }).catch(err => {
-        console.log("err : " + err);
-        res.status(500).json({
-            error: err
-        });
-    });
-});
+
+    req.checkBody('firstName', 'firstName must be specified.').notEmpty();
+    req.checkBody('firstName', 'firstName mustn\'t be contain special charachter .').isAlphanumeric();
+    req.checkBody('firstName', 'firstName mustn\'t be contain numbers .').isNumeric();
+    //=======================
+    req.checkBody('lastName', 'lastName must be specified.').notEmpty();
+    req.checkBody('lastName', 'lastName mustn\'t be contain special charachter .').isAlphanumeric();
+    req.checkBody('lastName', 'lastName mustn\'t be contain numbers .').isNumeric();
+
+    const errors = req.validationErrors(req);
 
 
-req.checkBody('firstName', 'firstName must be specified.').notEmpty();
-req.checkBody('firstName', 'firstName mustn\'t be contain special charachter .').isAlphanumeric();
-req.checkBody('firstName', 'firstName mustn\'t be contain numbers .').isNumeric();
-//=======================
-req.checkBody('lastName', 'lastName must be specified.').notEmpty();
-req.checkBody('lastName', 'lastName mustn\'t be contain special charachter .').isAlphanumeric();
-req.checkBody('lastName', 'lastName mustn\'t be contain numbers .').isNumeric();
-//=======================
-Author.findOne({ name: req.body.name }).then(author => {
-    if (author) {
-        return res.status(400).json({ name: 'author already exists' });
-    } else {
-
-        console.log(req.file);
-        const author = new Author({
-            photo: req.file.path,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            dateOfBirth: req.body.dateOfBirth,
-            description: req.body.description
-        });
-        author.save().then(result => {
-            console.log(result);
-            res.status(201).json({
-                message: "Created author successfully",
-            });
-        }).catch(err => {
-            console.log("err : " + err);
-            res.status(500).json({
-                error: err
-            });
-        });
+    if (errors){
+        res.json(errors);
+        return;
     }
-    // >>>>>>> 268df090572f0b779e8e9a57369cfa6860274727
+    else{
+        Author.findOne({ name: req.body.name }).then(author => {
+
+            if (author) {
+                return res.status(400).json({ name: 'author already exists' });
+            }
+            else{
+
+                const author = new Author({
+                    photo: req.file.path,
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
+                    dateOfBirth: req.body.dateOfBirth,
+                    description: req.body.description
+                });
+
+                author.save().then(result => {
+                    console.log(result);
+                    res.status(201).json({
+                        message: "Created author successfully",
+                    });
+                }).catch(err => {
+                    console.log("err : " + err);
+                    res.status(500).json({error: err})
+                    });
+
+            }
+
+
+        })
+
+
+    }
+
 });
+
+
 
 //get author by id
 authorRouter.get('/:id', (req, res) => {
@@ -107,6 +103,8 @@ authorRouter.get('/:id', (req, res) => {
         res.send('error in getting data');
     });
 });
+
+
 // update author by id
 authorRouter.put('/:id', upload.single('photo'), (req, res) => {
     Author.findOneAndUpdate(req.params.id, {
@@ -122,6 +120,8 @@ authorRouter.put('/:id', upload.single('photo'), (req, res) => {
     });
 
 });
+
+
 //delete author by id
 authorRouter.delete('/:id', (req, res) => {
     Author.findByIdAndRemove(req.params.id).then(() => {
@@ -133,6 +133,8 @@ authorRouter.delete('/:id', (req, res) => {
 
     });
 });
+
+
 //get books of specific author 
 authorRouter.get('/:id/books', (req, res) => {
     Book.find({ authorId: req.params.id }).then((books) => {
