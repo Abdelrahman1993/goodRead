@@ -3,6 +3,7 @@ const Author = require('../models/author');
 const Book = require('../models/book');
 const authorRouter = express.Router();
 const multer = require('multer');
+const passport = require('passport');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -40,7 +41,11 @@ authorRouter.get('/', (req, res) => {
 });
 
 //add new author
-authorRouter.post('/', upload.single('photo'), (req, res, next) => {
+authorRouter.post('/', passport.authenticate('jwt', { session: false }), upload.single('photo'), (req, res, next) => {
+
+    if(req.user.isAdmin != true){
+        return res.status(400).json({ msg: 'UnAthorized Access' });
+    }
 
     // req.checkBody('firstName', 'firstName must be specified.').isEmpty();
     // req.checkBody('firstName', 'firstName mustn\'t be contain special charachter .').isAlphanumeric();
@@ -107,7 +112,12 @@ authorRouter.get('/:id', (req, res) => {
 
 
 // update author by id
-authorRouter.put('/:id', upload.single('photo'), (req, res) => {
+authorRouter.put('/:id', passport.authenticate('jwt', { session: false }), upload.single('photo'), (req, res) => {
+
+    if(req.user.isAdmin != true){
+        return res.status(400).json({ msg: 'UnAthorized Access' });
+    }
+
     Author.findOneAndUpdate(req.params.id, {
         photo: req.file.path,
         firstName: req.body.firstName,
@@ -124,7 +134,12 @@ authorRouter.put('/:id', upload.single('photo'), (req, res) => {
 
 
 //delete author by id
-authorRouter.delete('/:id', (req, res) => {
+authorRouter.delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+
+    if(req.user.isAdmin != true){
+        return res.status(400).json({ msg: 'UnAthorized Access' });
+    }
+
     Author.findByIdAndRemove(req.params.id).then(() => {
         Book.remove({ authorId: req.params.id }).then(() => {
             res.json({msg: 'deleted'});

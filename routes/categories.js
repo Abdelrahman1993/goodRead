@@ -3,6 +3,7 @@ const Author = require('../models/author');
 const Book = require('../models/book');
 const Category = require('../models/category');
 const categoryRouter = express.Router();
+const passport = require('passport');
 
 
 //get all categories
@@ -16,7 +17,12 @@ categoryRouter.get('/', (req, res) => {
 
 
 //add new category
-categoryRouter.post('/', (req, res) => {
+categoryRouter.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
+
+    if(req.user.isAdmin != true){
+        return res.status(400).json({ msg: 'UnAthorized Access' });
+    }
+
     req.checkBody('name', 'name must be specified.').notEmpty();
     req.checkBody('name', 'name mustn\'t be contain special charachter .').isAlphanumeric();
     req.checkBody('name', 'name mustn\'t be contain numbers .').isNumeric();
@@ -50,7 +56,12 @@ categoryRouter.get('/:id', (req, res) => {
 });
 
 // update category by id
-categoryRouter.patch('/:id', (req, res) => {
+categoryRouter.put('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+
+    if(req.user.isAdmin != true){
+        return res.status(400).json({ msg: 'UnAthorized Access' });
+    }
+
     Category.updateOne({_id: req.params.id},{ $set: { name: req.body.name },}).then(() => {
         res.json({msg: 'updated'})
     }).catch((err) => {
@@ -60,7 +71,12 @@ categoryRouter.patch('/:id', (req, res) => {
 
 
 //delete category by id
-categoryRouter.delete('/:id', (req, res) => {
+categoryRouter.delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+
+    if(req.user.isAdmin != true){
+        return res.status(400).json({ msg: 'UnAthorized Access' });
+    }
+    
     Category.findByIdAndRemove(req.params.id).then(() => {
         Book.remove({ categoryId: req.params.id }).then(() => {
             res.json({msg: 'deleted'});
