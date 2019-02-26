@@ -1,8 +1,6 @@
 const express = require('express');
 const Book = require('../models/book');
 const Category = require('../models/category');
-// <<<<<<< HEAD
-const author = require('../models/author');
 const Author = require('../models/author');
 const bookRouter = express.Router();
 
@@ -49,7 +47,8 @@ bookRouter.get('/', (req, res) => {
 
 //add new book
 bookRouter.post('/', upload.single('photo'), (req, res) => {
-    Category.findOne({ categoryName: req.body.categoryName }).then(category => {
+    console.log(req.body);
+    Category.findById(req.body.categoryId).then(category => {
         if (!category) {
             return res.status(400).json({ categoryName: 'this category dose not exiest' });
         }
@@ -59,11 +58,11 @@ bookRouter.post('/', upload.single('photo'), (req, res) => {
                 return res.status(400).json({ email: 'this Author dose not exiest' });
             }
         const book = new Book({
-            photo: req.file.path,
+            photo: req.body.photo || '',
             name: req.body.name,
-            categoryName: req.body.categoryName,
-            authorName: req.body.authorName,
-            rate: req.body.rate
+            categoryId: req.body.categoryId,
+            authorId: req.body.authorId,
+            rate: 0,
         });
 
     book.save().then(result => {
