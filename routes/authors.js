@@ -42,8 +42,11 @@ authorRouter.get('/', (req, res) => {
 
 });
 
+//
+
 //add new author
-authorRouter.post('/', passport.authenticate('jwt', { session: false }), upload.single('photo'), (req, res, next) => {
+authorRouter.post('/', passport.authenticate('jwt', { session: false }),
+    upload.single('photo'), (req, res, next) => {
 
     if(req.user.isAdmin != true){
         return res.status(400).json({ msg: 'UnAthorized Access' });
@@ -59,7 +62,6 @@ authorRouter.post('/', passport.authenticate('jwt', { session: false }), upload.
 
     const errors = req.validationErrors(req);
 
-
     if (errors){
         res.json(errors);
         return;
@@ -74,7 +76,7 @@ authorRouter.post('/', passport.authenticate('jwt', { session: false }), upload.
             else{
 
                 const author = new Author({
-                    photo: req.body.photo || '',
+                    photo: req.file.path || '',
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
                     dateOfBirth: req.body.dateOfBirth,

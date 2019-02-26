@@ -2,6 +2,7 @@ const express = require('express');
 const Book = require('../models/book');
 const Category = require('../models/category');
 const Author = require('../models/author');
+
 const UserBook = require('../models/userBook');
 const Review = require('../models/review');
 
@@ -37,6 +38,7 @@ const upload = multer({
     fileFilter: fileFilter
 });
 
+const bookRouter = express.Router();
 //get all books
 bookRouter.get('/', (req, res) => {
     Book.find().populate('authorId').populate('categoryId').then((data) => {
@@ -50,9 +52,12 @@ bookRouter.get('/', (req, res) => {
 });
 
 //add new book
+//
+bookRouter.post('/', passport.authenticate('jwt', { session: false }),
+    upload.single('photo'), (req, res) => {
 
-bookRouter.post('/', passport.authenticate('jwt', { session: false }), upload.single('photo'), (req, res) => {
-
+    console.log("req file ======== "+ req.file.path)
+    //console.log("req body ======== "+ req.body);
     if(req.user.isAdmin != true){
         return res.status(400).json({ msg: 'UnAthorized Access' });
     }
@@ -67,7 +72,7 @@ bookRouter.post('/', passport.authenticate('jwt', { session: false }), upload.si
                 return res.status(400).json({ email: 'this Author dose not exiest' });
             }
         const book = new Book({
-            photo: req.body.photo || '',
+           photo: req.file.path || '',
             name: req.body.name,
             categoryId: req.body.categoryId,
             authorId: req.body.authorId,

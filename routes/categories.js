@@ -19,8 +19,7 @@ categoryRouter.get('/', (req, res) => {
 
 
 //add new category
-categoryRouter.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
-
+categoryRouter.post('/', passport.authenticate('jwt', { session: false }),(req, res) => {
     if(req.user.isAdmin != true){
         return res.status(400).json({ msg: 'UnAthorized Access' });
     }
