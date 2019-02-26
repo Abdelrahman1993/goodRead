@@ -75,7 +75,8 @@ class AddCategoryForm extends Component {
                 <ModalBody>
                     <FormGroup>
                         <Input type="name" name="name" id="name" placeholder="Add Category"
-                               value={this.state.newCategory} onChange={this.handle_updateCategory} />
+                               value={this.state.newCategory}
+                               onChange={this.handle_updateCategory} />
                     </FormGroup>
                 </ModalBody>
                 <ModalFooter>

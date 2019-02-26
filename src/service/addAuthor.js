@@ -1,6 +1,6 @@
-export default function AddBook(data) {
+export default function AddAuthor(data) {
   console.log(data);
-  return fetch('http://localhost:4000/books/', {
+  return fetch('http://localhost:4000/authors/', {
     body: JSON.stringify(data),
     method: 'POST',
     headers: {

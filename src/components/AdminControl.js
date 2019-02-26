@@ -32,6 +32,7 @@ class AdminControl extends Component {
             this.setState({
                 activeTab: tab
             });
+
         }
     }
 
