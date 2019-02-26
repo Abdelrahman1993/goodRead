@@ -15,6 +15,7 @@ class AddAuthorForm extends Component {
           newAuthor: "",
         };
         this.handle_modal = this.handle_modal.bind(this);
+        this.handling_modal = this.handling_modal.bind(this);
     }
     handle_modal() {
         this.setState(prevState => ({
@@ -22,6 +23,12 @@ class AddAuthorForm extends Component {
         }));
     }
 
+
+    handling_modal() {
+        this.setState(prevState => ({
+            EditModal: !prevState.EditModal
+        }));
+    }
     componentDidMount(){
       GetAuthors()
       .then(data => {
@@ -112,6 +119,20 @@ class AddAuthorForm extends Component {
                     <ModalFooter>
                         <Button color="primary" onClick={this.handle_modal} onClick={this.handle_addAuthor} >{this.props.title}</Button>{' '}
                         <Button color="secondary" onClick={this.handle_modal}>{this.props.cancel}</Button>
+                    </ModalFooter>
+                </Modal>
+
+
+                <Modal isOpen={this.state.EditModal} toggle={this.handling_modal} className={this.props.className}>
+                    <ModalHeader toggle={this.handling_modal}>Edit Author</ModalHeader>
+                    <ModalBody>
+                        <FormGroup>
+                            <Input type="name" name="name" id="name" placeholder="Edit Author"  />
+                        </FormGroup>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="primary" onClick={this.handling_modal} >Edit</Button>{' '}
+                        <Button color="secondary" onClick={this.handling_modal}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
 

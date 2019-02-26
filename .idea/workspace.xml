@@ -3,6 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="0b60325d-9a46-4792-827e-79e5d1f1248b" name="Default Changelist" comment="" />
     <list default="true" id="0b60325d-9a46-4792-827e-79e5d1f1248b" name="Default Changelist" comment="">
+<<<<<<< HEAD
+      <change afterPath="$PROJECT_DIR$/src/components/EditCategory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddAuthorForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddAuthorForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddBookForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddBookForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddCategoryForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddCategoryForm.js" afterDir="false" />
+=======
       <change afterPath="$PROJECT_DIR$/src/service/addAuthor.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/service/delAuthor.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -12,6 +21,7 @@
       <change beforePath="$PROJECT_DIR$/src/components/AdminControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AdminControl.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/addBook.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/addBook.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/author.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/author.js" afterDir="false" />
+>>>>>>> d11c725206ca73b3b729dee8331814dcdef755fc
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,11 +37,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/AddBookForm.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="187">
+              <caret line="24" column="50" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
+=======
             <state>
               <caret line="18" selection-start-line="18" selection-end-line="18" />
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
               <caret line="23" selection-start-line="23" selection-end-line="23" />
+>>>>>>> d11c725206ca73b3b729dee8331814dcdef755fc
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -42,8 +57,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/service/addBook.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="153">
+              <caret line="41" column="20" lean-forward="true" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+=======
             <state relative-caret-position="351">
               <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+>>>>>>> d11c725206ca73b3b729dee8331814dcdef755fc
             </state>
           </provider>
         </entry>
@@ -51,8 +71,25 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/AdminControl.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="-306">
+              <caret line="77" column="24" lean-forward="true" selection-start-line="77" selection-start-column="24" selection-end-line="77" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/AdminControl.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="75" column="37" selection-start-line="75" selection-start-column="37" selection-end-line="75" selection-end-column="37" />
+=======
             <state relative-caret-position="810">
               <caret line="33" column="15" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
+>>>>>>> d11c725206ca73b3b729dee8331814dcdef755fc
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -69,8 +106,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="37">
+              <caret line="122" lean-forward="true" selection-start-line="122" selection-end-line="134" selection-end-column="24" />
+=======
             <state relative-caret-position="200">
               <caret line="17" column="54" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="54" />
+>>>>>>> d11c725206ca73b3b729dee8331814dcdef755fc
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -81,8 +123,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="765">
+              <caret line="46" column="52" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
+=======
             <state relative-caret-position="254">
               <caret line="19" selection-start-line="19" selection-end-line="19" />
+>>>>>>> d11c725206ca73b3b729dee8331814dcdef755fc
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -100,8 +147,13 @@
 
         <entry file="file://$PROJECT_DIR$/src/components/AddAuthorForm.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="170">
+              <caret line="12" column="30" lean-forward="true" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+=======
             <state relative-caret-position="324">
               <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+>>>>>>> d11c725206ca73b3b729dee8331814dcdef755fc
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -128,6 +180,10 @@
 <<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/components/AddCategoryForm.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="238">
+              <caret line="14" column="41" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+=======
             <state relative-caret-position="810">
               <caret line="35" selection-start-line="35" selection-end-line="35" />
 =======
@@ -138,6 +194,7 @@
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
+>>>>>>> d11c725206ca73b3b729dee8331814dcdef755fc
             </state>
           </provider>
         </entry>
@@ -145,9 +202,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/AddCategoryForm.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="153">
+              <caret line="27" selection-start-line="27" selection-end-line="32" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/EditCategory.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="61" />
+=======
             <state relative-caret-position="1026">
               <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
 >>>>>>> master
+>>>>>>> d11c725206ca73b3b729dee8331814dcdef755fc
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -168,6 +242,11 @@
     <findStrings>
       <find>?</find>
       <find>myc</find>
+<<<<<<< HEAD
+      <find>f</find>
+      <find>hr</find>
+      <find>modalIsOpen</find>
+=======
       <find>handle_add</find>
       <find>newCategory</find>
       <find>newB</find>
@@ -180,6 +259,7 @@
       <find>title</find>
       <find>submitCat</find>
       <find>updateCategory</find>
+>>>>>>> d11c725206ca73b3b729dee8331814dcdef755fc
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -198,6 +278,23 @@
         <option value="$PROJECT_DIR$/../HeshamSayed_WordPress/AmlGdeed/style.css" />
         <option value="$PROJECT_DIR$/src/App.css" />
         <option value="$PROJECT_DIR$/src/Styles/AdminPanel.css" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/src/components/Home.js" />
+        <option value="$PROJECT_DIR$/src/components/UsrLogin.js" />
+        <option value="$PROJECT_DIR$/src/components/footer.js" />
+        <option value="$PROJECT_DIR$/src/components/UsrSignUp.js" />
+        <option value="$PROJECT_DIR$/src/components/AdminControl.js" />
+        <option value="$PROJECT_DIR$/src/components/Footer.js" />
+        <option value="$PROJECT_DIR$/src/components/Nav.js" />
+        <option value="$PROJECT_DIR$/src/components/SideBar.js" />
+        <option value="$PROJECT_DIR$/src/components/handlePagination.js" />
+        <option value="$PROJECT_DIR$/src/components/TablePagination.js" />
+        <option value="$PROJECT_DIR$/src/App.css" />
+        <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/components/EditCategory.js" />
+        <option value="$PROJECT_DIR$/src/components/AddCategoryForm.js" />
+        <option value="$PROJECT_DIR$/src/components/AddBookForm.js" />
+=======
         <option value="$PROJECT_DIR$/src/service/admin.js" />
         <option value="$PROJECT_DIR$/src/service/category.js" />
         <option value="$PROJECT_DIR$/src/service/book.js" />
@@ -212,6 +309,7 @@
         <option value="$PROJECT_DIR$/src/components/AddCategoryForm.js" />
         <option value="$PROJECT_DIR$/src/service/addAuthor.js" />
         <option value="$PROJECT_DIR$/src/service/delAuthor.js" />
+>>>>>>> d11c725206ca73b3b729dee8331814dcdef755fc
         <option value="$PROJECT_DIR$/src/components/AddAuthorForm.js" />
         <option value="$PROJECT_DIR$/src/components/AddBookForm.js" />
         <option value="$PROJECT_DIR$/src/components/AdminControl.js" />
@@ -332,19 +430,30 @@
       <workItem from="1550906616611" duration="5978000" />
       <workItem from="1550928129338" duration="13987000" />
       <workItem from="1550954786581" duration="1387000" />
+<<<<<<< HEAD
+      <workItem from="1550999737052" duration="17272000" />
+      <workItem from="1551083786704" duration="26284000" />
+      <workItem from="1551178471084" duration="124000" />
+      <workItem from="1551193247841" duration="6046000" />
+=======
       <workItem from="1550999737052" duration="16632000" />
       <workItem from="1551045254729" duration="4951000" />
       <workItem from="1551080167540" duration="43149000" />
       <workItem from="1551164837910" duration="798000" />
+>>>>>>> d11c725206ca73b3b729dee8331814dcdef755fc
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
 <<<<<<< HEAD
+    <option name="totallyTimeSpent" value="113101000" />
+=======
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="104487000" />
 =======
     <option name="totallyTimeSpent" value="128905000" />
 >>>>>>> master
+>>>>>>> d11c725206ca73b3b729dee8331814dcdef755fc
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -359,10 +468,14 @@
     <frame x="71" y="25" width="1849" height="1055" extended-state="6" />
     <layout>
 <<<<<<< HEAD
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15104167" />
+=======
+<<<<<<< HEAD
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17792422" />
 =======
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17792422" />
 >>>>>>> master
+>>>>>>> d11c725206ca73b3b729dee8331814dcdef755fc
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -376,10 +489,14 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3289689" />
 <<<<<<< HEAD
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.3927987" />
+=======
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.29580575" />
 =======
       <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.29580575" />
 >>>>>>> master
+>>>>>>> d11c725206ca73b3b729dee8331814dcdef755fc
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50074404" side_tool="true" weight="0.20294599" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -479,6 +596,9 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/components/UsrSignUp.js">
+=======
     <entry file="file://$PROJECT_DIR$/package-lock.json">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
@@ -500,12 +620,59 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/service/admin.js">
+>>>>>>> d11c725206ca73b3b729dee8331814dcdef755fc
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
           <caret line="13" column="1" selection-end-line="13" selection-end-column="1" />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa10304.23118/find-component.js" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa10304.25300/index.js" />
+    <entry file="file://$PROJECT_DIR$/src/components/UsrLogin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Footer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="49" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/handlePagination.js" />
+    <entry file="file://$PROJECT_DIR$/src/components/Nav.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="46" column="52" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/signup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="41" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/TablePagination.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7633">
+          <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+=======
 <<<<<<< HEAD
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa10304.23118/find-component.js" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa10304.25300/index.js" />
@@ -549,6 +716,7 @@
         <state relative-caret-position="135">
           <caret line="23" selection-start-line="23" selection-end-line="23" />
 >>>>>>> master
+>>>>>>> d11c725206ca73b3b729dee8331814dcdef755fc
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
@@ -557,6 +725,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/service/addBook.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="153">
+          <caret line="41" column="20" lean-forward="true" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="24" column="50" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/AdminControl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="75" column="37" selection-start-line="75" selection-start-column="37" selection-end-line="75" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+=======
         <state relative-caret-position="351">
           <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
         </state>
@@ -566,11 +758,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="27">
           <caret line="1" column="45" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="45" />
+>>>>>>> d11c725206ca73b3b729dee8331814dcdef755fc
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/service/book.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="170">
+          <caret line="12" column="30" lean-forward="true" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/AddCategoryForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="27" selection-start-line="27" selection-end-line="32" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/EditCategory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="61" />
+=======
         <state relative-caret-position="108">
           <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
         </state>
@@ -592,14 +809,19 @@
         <state relative-caret-position="513">
           <caret line="24" column="21" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="21" />
 >>>>>>> master
+>>>>>>> d11c725206ca73b3b729dee8331814dcdef755fc
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/AddCategoryForm.js">
+    <entry file="file://$PROJECT_DIR$/src/components/AddBookForm.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="37">
+          <caret line="122" lean-forward="true" selection-start-line="122" selection-end-line="134" selection-end-column="24" />
+=======
 <<<<<<< HEAD
         <state relative-caret-position="810">
           <caret line="35" selection-start-line="35" selection-end-line="35" />
@@ -607,6 +829,7 @@
         <state relative-caret-position="1026">
           <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
 >>>>>>> master
+>>>>>>> d11c725206ca73b3b729dee8331814dcdef755fc
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
@@ -616,12 +839,17 @@
     <entry file="file://$PROJECT_DIR$/src/components/AdminControl.js">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+        <state relative-caret-position="-306">
+          <caret line="77" column="24" lean-forward="true" selection-start-line="77" selection-start-column="24" selection-end-line="77" selection-end-column="24" />
+=======
+<<<<<<< HEAD
         <state relative-caret-position="324">
           <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
 =======
         <state relative-caret-position="810">
           <caret line="33" column="15" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
 >>>>>>> master
+>>>>>>> d11c725206ca73b3b729dee8331814dcdef755fc
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>

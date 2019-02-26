@@ -37,10 +37,10 @@
 }
 
 .sidbar{
-    background-color: greenyellow;
+    background-color: #a6cdff;
     width: 20%;
     font-size: 18px;
     margin-left: 1%;
-    border-right: 3px solid dodgerblue;
+    border-right: 3px solid gold;
     padding-bottom: 10px;
 }
