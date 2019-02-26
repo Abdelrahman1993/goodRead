@@ -1,21 +1,21 @@
 import React , {Component} from 'react';
 import {Button, Col, Form, FormGroup, Input, Label, ModalBody, ModalFooter, ModalHeader, Table} from "reactstrap";
 import {Modal} from "reactstrap"
+import GetCategories from "../service/category";
+import DeleteCategory from '../service/delCategory';
+import AddCategory from "../service/addCategory";
 
 class AddCategoryForm extends Component {
 
     constructor(props) {
         super(props);
         this.state={
-
             modalIsOpen: false,
             newCategory: "",
-            categories : [{text:'Mango'} , {text:'chicken'}],
-
+            categories : [],
         };
         this.handle_modal = this.handle_modal.bind(this);
         this.handling_modal = this.handling_modal.bind(this);
-
     }
 
     handle_modal() {
@@ -40,16 +40,37 @@ class AddCategoryForm extends Component {
     }
 
     handle_addCategory =()=>{
-        const categories = [...this.state.categories];
-        categories.push({
-            text:this.state.newCategory,
-
+        AddCategory({
+            'name': this.state.newCategory,
+        }).then(data => {
+            GetCategories()
+            .then(data => {
+                this.setState({
+                    categories: data,
+                    newCategory : "",
+                });
+            });
         });
+    }
+
+
+    componentDidMount(){
+      GetCategories()
+      .then(data => {
         this.setState({
-            categories,
-            newCategory : "",
-        });
+            categories: data,
+        })
+      });
+    }
 
+    deletRow = (index) =>{
+        const categories = [...this.state.categories];
+        console.log(categories[index.target.value]._id);
+        DeleteCategory(categories[index.target.value]._id).then((data) => {
+            console.log(data);
+        });
+        categories.splice(index.target.value,1);
+        this.setState({categories});
     }
 
     render() {
@@ -62,11 +83,14 @@ class AddCategoryForm extends Component {
                 <ModalHeader toggle={this.handle_modal}>{this.props.title}</ModalHeader>
                 <ModalBody>
                     <FormGroup>
-                        <Input type="name" name="name" id="name" placeholder="Add Category" value={this.state.newCategory} onChange={this.handle_updateCategory} />
+                        <Input type="name" name="name" id="name" placeholder="Add Category"
+                               value={this.state.newCategory}
+                               onChange={this.handle_updateCategory} />
                     </FormGroup>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" onClick={this.handle_modal} onClick={this.handle_addCategory}>{this.props.title}</Button>{' '}
+                    <Button color="primary" onClick={this.handle_modal}
+                            onClick={this.handle_addCategory}>{this.props.title}</Button>{' '}
                     <Button color="secondary" onClick={this.handle_modal}>{this.props.cancel}</Button>
                 </ModalFooter>
             </Modal>
@@ -96,11 +120,12 @@ class AddCategoryForm extends Component {
                         <tr>
                             <th>{index+1}</th>
                             <th key={index}>
-                                {category.text}
+                                {category.name}
                             </th>
                             <th>
                                 <button type="button" className="btn btn-info" onClick={this.handling_modal}>Edit</button> {" "}
-                                <button type="button" className="btn btn-danger">Delete</button> </th>
+                                <button value={index} onClick={this.deletRow.bind(this)}
+                                    type="button" className="btn btn-danger">Delete</button> </th>
                         </tr>)}
                     </thead>
                 </Table>
