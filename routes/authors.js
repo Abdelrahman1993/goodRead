@@ -1,6 +1,8 @@
 const express = require('express');
 const Author = require('../models/author');
 const Book = require('../models/book');
+const UserBook = require('../models/userBook');
+const Review = require('../models/review');
 const authorRouter = express.Router();
 const multer = require('multer');
 const passport = require('passport');
@@ -142,10 +144,36 @@ authorRouter.delete('/:id', passport.authenticate('jwt', { session: false }), (r
         return res.status(400).json({ msg: 'UnAthorized Access' });
     }
 
+    // let AuthorIdData = req.params.id;
+    // let BookIdData = Book.findOne({ authorId : AuthorIdData});
+    // let BookIdData = Book.findOne({ authorId : AuthorIdData});
+
+    Book.pre('remove',function(next){
+        UserBook.remove({bookId: this._id}).exec();
+        Review.remove({bookId: this._id}).exec();
+        next();
+    }).catch((err) => {
+        res.json({msg: err});
+    });
+
     Author.findByIdAndRemove(req.params.id).then(() => {
-        Book.remove({ authorId: req.params.id }).then(() => {
-            res.json({msg: 'deleted'});
-        });
+        console.log("line 150 remove author");
+        let authorID = req.params.id;
+        Book.find({authorId: authorID}).then((book)=>{
+            console.log("line 153 find book");
+            let BookID = book.bookId;
+            Book.findByIdAndRemove(BookID).then(()=>{
+                console.log("line 156 remove book");
+                UserBook.remove({bookId:BookID}).then(()=>{
+                    console.log("line 158 remove user book");
+                    Review.remove({bookId:BookID}).then(()=>{
+                        console.log("line 160 remove review");
+                        res.json({msg: 'deleted'});
+                    })
+                })
+
+            })
+        })
     }).catch(() => {
         res.send('error in delete data ' + err);
 
