@@ -8,6 +8,7 @@ import UsrSignUp from "./components/UsrSignUp";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
 import SideBar from "./components/SideBar";
+import EditCategory from "./components/EditCategory";
 
 
 class App extends React.Component {
@@ -18,7 +19,7 @@ class App extends React.Component {
             <div  >
                 {/*<Link to="/Admin">Admin</Link>*/}
 
-               <Route path="/" exact component={Nav}/>
+               <Route path="/" exact component={EditCategory}/>
                 {/*<Route path="/" exact component={UsrSignUp}/>*/}
                 <Route path="/" exact component={SideBar}/>
               <Route path="/Admin" exact component={AdminLogin} />

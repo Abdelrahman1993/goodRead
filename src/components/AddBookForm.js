@@ -25,6 +25,7 @@ class AddBookForm extends Component{
 
         };
         this.handle_modal = this.handle_modal.bind(this);
+        this.handling_modal = this.handling_modal.bind(this);
     }
     handle_modal() {
         this.setState(prevState => ({
@@ -64,6 +65,16 @@ class AddBookForm extends Component{
             newBook :'',
         });
     }
+
+    handling_modal() {
+        this.setState(prevState => ({
+            EditModal: !prevState.EditModal
+        }));
+    }
+
+
+
+
     render() {
         return (
             <div>
@@ -109,6 +120,19 @@ class AddBookForm extends Component{
 
 
                 </Modal>
+
+                <Modal isOpen={this.state.EditModal} toggle={this.handling_modal} className={this.props.className}>
+                    <ModalHeader toggle={this.handling_modal}>Edit Book</ModalHeader>
+                    <ModalBody>
+                        <FormGroup>
+                            <Input type="name" name="name" id="name" placeholder="Edit Book"  />
+                        </FormGroup>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="primary" onClick={this.handling_modal} >Edit</Button>{' '}
+                        <Button color="secondary" onClick={this.handling_modal}>Cancel</Button>
+                    </ModalFooter>
+                </Modal>
                 <Table>
                     <thead>
                     <tr>
@@ -132,7 +156,7 @@ class AddBookForm extends Component{
                             <th>{book.cat}</th>
                             <th>{book.author}</th>
                             <th>
-                                <button type="button" className="btn btn-info">Edit</button> {" "}
+                                <button type="button" className="btn btn-info" onClick={this.handling_modal}>Edit</button> {" "}
                                 <button type="button" className="btn btn-danger">Delete</button> </th>
                         </tr>)}
 
