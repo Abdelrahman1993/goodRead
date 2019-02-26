@@ -1,3 +1,5 @@
+import Cookies from 'universal-cookie';
+
 export default function AddCategory(data) {
 
   return fetch('http://localhost:4000/categories/', {
@@ -5,6 +7,7 @@ export default function AddCategory(data) {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
+      "Authorization": new Cookies().get('token'),
     },
   }).then(response =>
       response.json()

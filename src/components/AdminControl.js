@@ -16,6 +16,9 @@ import AddCategoryForm from "./AddCategoryForm";
 import AddBookForm from "./AddBookForm";
 import AddAuthorForm from "./AddAuthorForm";
 import Cookies from 'universal-cookie';
+import GetBooks from "../service/book";
+import GetCategories from "../service/category";
+import GetAuthors from "../service/author";
 
 
 class AdminControl extends Component {
@@ -30,9 +33,8 @@ class AdminControl extends Component {
     toggle(tab) {
         if (this.state.activeTab !== tab) {
             this.setState({
-                activeTab: tab
+                activeTab: tab,
             });
-
         }
     }
 

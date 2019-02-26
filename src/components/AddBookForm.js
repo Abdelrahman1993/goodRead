@@ -28,13 +28,37 @@ class AddBookForm extends Component{
             authors: [],
             newBook: {},
             categories: [],
+            file: null,
         };
         this.handle_modal = this.handle_modal.bind(this);
     }
+
+
+
     handle_modal() {
-        this.setState(prevState => ({
-            modal: !prevState.modal
-        }));
+        GetCategories()
+              .then(data => {
+                  console.log("1");
+                this.setState({
+                    categories: data,
+                    newBook: {...this.state.newBook, categoryId: data[0]._id},
+                });
+              }).then(() => {
+                  GetAuthors()
+                  .then(data => {
+                      console.log("2");
+                    this.setState({
+                        authors: data,
+                        newBook: {...this.state.newBook, authorId: data[0]._id},
+                    })
+                  }).then(() => {
+                      this.setState(prevState => ({
+                        modal: !prevState.modal
+                      }));
+                  });
+            });
+
+
     }
 
     handle_updateBook =(event)=>{
@@ -53,9 +77,11 @@ class AddBookForm extends Component{
                 newBook: {...this.state.newBook, authorId: event.target.value,}
             });
         } else if(event.target.name === "file") {
-            let path = event.target.value.split('\\');
+            let path = event.target.files[0];
+            console.log(path);
+
             this.setState({
-                newBook: {...this.state.newBook, photo: path[2],}
+                newBook: {...this.state.newBook, photo: path,}
             });
         }
 
@@ -143,7 +169,10 @@ class AddBookForm extends Component{
                             </FormGroup>
                             <FormGroup>
                                 <Label for="exampleFile">Upload Image</Label>
-                                <Input type="file" name="file" id="exampleFile" onChange={this.handle_updateBook}/>
+                                <Input type="file" name="file" id="exampleFile"
+                                       onChange={this.handle_updateBook}
+                                       // onChange= {this.onChange}
+                                       />
                             </FormGroup>
                         </Form>
                     </ModalBody>
@@ -152,7 +181,6 @@ class AddBookForm extends Component{
                                 onClick={this.handle_addBook}>{this.props.title}</Button>{' '}
                         <Button color="secondary" onClick={this.handle_modal}>{this.props.cancel}</Button>
                     </ModalFooter>
-
 
                 </Modal>
                 <Table>
@@ -172,7 +200,7 @@ class AddBookForm extends Component{
                         <tr>
                             <th>{index+1}</th>
                             <th key={index}>
-                                <img src={book.photo} width="50" height="50" alt="error image"/>
+                                <img src={"http://localhost:4000/"+book.photo} width="50" height="50" alt="error image"/>
                             </th>
                             <th>{book.name}</th>
                             <th>{book.categoryId.name}</th>

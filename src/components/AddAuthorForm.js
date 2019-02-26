@@ -46,9 +46,10 @@ class AddAuthorForm extends Component {
               newAuthor: {...this.state.newAuthor, dateOfBirth: event.target.value,}
             });
         } else if(event.target.name === "file") {
-            let path = event.target.value.split('\\');
+            let path = event.target.files[0];
+            console.log(path);
             this.setState({
-                newAuthor: {...this.state.newAuthor, photo: path[2],}
+                newAuthor: {...this.state.newAuthor, photo: path,}
             });
         }
 
@@ -131,7 +132,8 @@ class AddAuthorForm extends Component {
                         <tr>
                             <th>{index+1}</th>
                             <th key={index}>
-                                {author.photo}
+                                <img src={"http://localhost:4000/"+author.photo}
+                                     width="50" height="50" alt="error image"/>
                             </th>
                             <th>
                                 {author.firstName}
