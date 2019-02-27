@@ -29,7 +29,6 @@ class AddBookForm extends Component{
             authors: [],
             newBook: {},
             categories: [],
-            file: null,
         };
         this.handle_modal = this.handle_modal.bind(this);
         this.handling_modal = this.handling_modal.bind(this);
