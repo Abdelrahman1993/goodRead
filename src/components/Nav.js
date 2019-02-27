@@ -7,8 +7,8 @@ class Nav extends Component {
     render() {
         return (
 
-         <div className='Nav'>
-             <nav className="mb-1 navbar navbar-expand-lg navbar-dark orange lighten-1">
+         <div className='container-fluid navIBack '>
+             <nav className="mb-1 navIBack navbar navbar-expand-lg navbar-dark orange lighten-1">
                  <a className="navbar-brand" href="#">GoodReads</a>
                  <div className="collapse navbar-collapse" id="navbarSupportedContent-555">
                      <ul className="navbar-nav mr-auto">

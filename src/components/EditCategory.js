@@ -1,47 +1,49 @@
 import React , {Component} from 'react';
 import {Button, Col, Form, FormGroup, Input, Label, ModalBody, ModalFooter, ModalHeader, Table} from "reactstrap";
 import {Modal} from "reactstrap"
+import '../App.css'
 
-class EditCategory extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state={
-
-            modalIsOpen: false,
-
-        };
-        this.handling_modal = this.handling_modal.bind(this);
-
-    }
-
-    handling_modal() {
-        this.setState(prevState => ({
-            EditModal: !prevState.EditModal
-        }));
-    }
-
-
+class TableWithPagination extends Component {
     render() {
-
         return (
-            <div>
-                <button onClick={this.handling_modal} className='btn btn-info offset-lg-10  offset-md-10  offset-sm-10  offset-xs-10 add_category'>{this.props.title} +</button>
-                <Modal isOpen={this.state.EditModal} toggle={this.handling_modal} className={this.props.className}>
-                    <ModalHeader toggle={this.handling_modal}>{this.props.title}</ModalHeader>
-                    <ModalBody>
-                        <FormGroup>
-                            <Input type="name" name="name" id="name" placeholder="Edit Category"  />
-                        </FormGroup>
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button color="primary" onClick={this.handling_modal} >{this.props.title}</Button>{' '}
-                        <Button color="secondary" onClick={this.handling_modal}>{this.props.cancel}</Button>
-                    </ModalFooter>
-                </Modal>
-            </div>
-
+                <table  className="c marginTable table table-striped table-bordered table-sm " cellSpacing="5">
+                    <thead>
+                    <tr className='c'>
+                        <th className="th-sm">Cover
+                        </th>
+                        <th className="th-sm">Name
+                        </th>
+                        <th className="th-sm">Author
+                        </th>
+                        <th className="th-sm">Avg Rate
+                        </th>
+                        <th className="th-sm">Rating
+                        </th>
+                        <th className="th-sm co">Shelve
+                         <tr>
+                         </tr>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Tiger Nixon</td>
+                        <td>System Architect</td>
+                        <td>Edinburgh</td>
+                        <td>61</td>
+                        <td>2011/04/25</td>
+                        <td>
+                            <Input type="select" name="select" id="exampleSelect">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </Input></td>
+                    </tr>
+                    </tbody>
+                </table>
         );
     }
 }
-export default EditCategory;
+export default TableWithPagination;

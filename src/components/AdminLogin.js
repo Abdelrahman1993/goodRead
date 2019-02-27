@@ -52,7 +52,6 @@ class AdminLogin extends Component {
             <div className=' offset-lg-3 col-lg-6 AdminPanelSection '>
               <h3>Admin Panel</h3>
               <hr/>
-              {/*<form>*/}
                 <div className="form-group">
                   <label htmlFor="exampleInputEmail1">Email</label>
                   <input type="email" className="form-control"
@@ -68,7 +67,7 @@ class AdminLogin extends Component {
                          onChange={this.handleUpdatePassword}/>
                 </div>
                 <button type="submit" className="btn btn-primary" onClick={this.hundleLogin}>Login</button>
-              {/*</form>*/}
+
             </div>
           </div>
         </div>
