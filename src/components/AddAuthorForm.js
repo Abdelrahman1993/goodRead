@@ -4,6 +4,7 @@ import {Modal} from "reactstrap"
 import GetAuthors from "../service/author";
 import AddAuthor from "../service/addAuthor";
 import DeleteAuthor from "../service/delAuthor";
+import EditAuthor from "../service/editAuthor";
 
 class AddAuthorForm extends Component {
 
@@ -24,7 +25,8 @@ class AddAuthorForm extends Component {
     }
 
 
-    handling_modal() {
+    handling_modal(event) {
+      this.handle_updateAuthor(event);
         this.setState(prevState => ({
             EditModal: !prevState.EditModal
         }));
@@ -39,6 +41,12 @@ class AddAuthorForm extends Component {
     }
 
     handle_updateAuthor =(event)=>{
+      if(event.target.name === "edit") {
+          let data = JSON.parse(event.target.value);
+            this.setState({
+              newAuthor: data,
+            });
+        }
       if(event.target.name === "firstname") {
             this.setState({
                 newAuthor: {...this.state.newAuthor, firstName: event.target.value,}
@@ -53,9 +61,10 @@ class AddAuthorForm extends Component {
               newAuthor: {...this.state.newAuthor, dateOfBirth: event.target.value,}
             });
         } else if(event.target.name === "file") {
-            let path = event.target.value.split('\\');
+            let path = event.target.files[0];
+            console.log(path);
             this.setState({
-                newAuthor: {...this.state.newAuthor, photo: path[2],}
+                newAuthor: {...this.state.newAuthor, photo: path,}
             });
         }
 
@@ -73,14 +82,33 @@ class AddAuthorForm extends Component {
         });
     }
 
+    handle_EditAuthor =()=>{
+        console.log(this.state.newAuthor);
+        EditAuthor(this.state.newAuthor).then(data => {
+          console.log(data);
+            GetAuthors()
+            .then(data => {
+                this.setState({
+                    authors: data,
+                    newAuthor : "",
+                });
+            });
+        });
+    }
+
     deletRow = (index) =>{
         const authors = [...this.state.authors];
         console.log(authors[index.target.value]._id);
         DeleteAuthor(authors[index.target.value]._id).then((data) => {
             console.log(data);
+            GetAuthors().then(data => {
+            this.setState({
+              authors: data,
+              newAuthor : "",
+            });
+          });
         });
-        authors.splice(index.target.value,1);
-        this.setState({authors});
+
     }
 
     render() {
@@ -116,7 +144,8 @@ class AddAuthorForm extends Component {
 
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={this.handle_modal} onClick={this.handle_addAuthor} >{this.props.title}</Button>{' '}
+                        <Button color="primary" onClick={this.handle_modal}
+                                onClick={this.handle_addAuthor} >{this.props.title}</Button>{' '}
                         <Button color="secondary" onClick={this.handle_modal}>{this.props.cancel}</Button>
                     </ModalFooter>
                 </Modal>
@@ -126,11 +155,32 @@ class AddAuthorForm extends Component {
                     <ModalHeader toggle={this.handling_modal}>Edit Author</ModalHeader>
                     <ModalBody>
                         <FormGroup>
-                            <Input type="name" name="name" id="name" placeholder="Edit Author"  />
+                            <Input type="name" name="firstname" id="name"
+                                   placeholder="First Name"
+                                   value={this.state.newAuthor.firstName}
+                                   onChange={this.handle_updateAuthor}/>
                         </FormGroup>
+                       <FormGroup>
+                            <Input type="name" name="lastname" id="name"
+                                   placeholder="Last Name"
+                                   value={this.state.newAuthor.lastName}
+                                   onChange={this.handle_updateAuthor}/>
+                        </FormGroup>
+                      <FormGroup>
+                                <input type="date" name="dateofbirth" id="dateofbirth"
+                                       value={this.state.newAuthor.dateOfBirth}
+                                onChange={this.handle_updateAuthor}/>
+                            </FormGroup>
+                       <FormGroup>
+                                <Label for="exampleFile">Upload Image</Label>
+                                <Input type="file" name="file" id="exampleFile"
+                                onChange={this.handle_updateAuthor}/>
+                            </FormGroup>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={this.handling_modal} >Edit</Button>{' '}
+                        <Button onClick={this.handling_modal}
+                                onClick={this.handle_EditAuthor} color="primary"
+                                 >Edit</Button>{' '}
                         <Button color="secondary" onClick={this.handling_modal}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
@@ -152,7 +202,8 @@ class AddAuthorForm extends Component {
                         <tr>
                             <th>{index+1}</th>
                             <th key={index}>
-                                {author.photo}
+                                <img src={"http://localhost:4000/"+author.photo}
+                                     width="50" height="50" alt="error image"/>
                             </th>
                             <th>
                                 {author.firstName}
@@ -164,9 +215,13 @@ class AddAuthorForm extends Component {
                                 {author.dateOfBirth}
                             </th>
                             <th>
-                                <button type="button" className="btn btn-info">Edit</button> {" "}
+                                <button value={JSON.stringify(author)} type="button"
+                                        className="btn btn-info" name="edit"
+                                        onClick={this.handling_modal}>Edit</button> {" "}
+
                                 <button value= {index} onClick={this.deletRow.bind(this)}
-                                    type="button" className="btn btn-danger">Delete</button> </th>
+                                    type="button" className="btn btn-danger">Delete</button>
+                            </th>
                         </tr>)}
                     </thead>
                 </Table>

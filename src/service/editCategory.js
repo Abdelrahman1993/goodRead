@@ -1,10 +1,10 @@
 import Cookies from 'universal-cookie';
 
-export default function AddCategory(data) {
+export default function EditCategory(data) {
 
-  return fetch('http://localhost:4000/categories/', {
+  return fetch('http://localhost:4000/categories/'+data._id, {
+    method: 'PUT',
     body: JSON.stringify(data),
-    method: 'POST',
     headers: {
       "Content-Type": "application/json",
       "Authorization": new Cookies().get('token'),

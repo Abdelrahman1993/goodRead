@@ -19,7 +19,11 @@ class App extends React.Component {
 
     return (
         <BrowserRouter>
+
+
             <Route path="/" exact component={UsrSignUp}/>
+
+
         </BrowserRouter>
     );
   }
