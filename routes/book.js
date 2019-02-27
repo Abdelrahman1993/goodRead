@@ -38,7 +38,6 @@ const upload = multer({
     fileFilter: fileFilter
 });
 
-const bookRouter = express.Router();
 //get all books
 bookRouter.get('/', (req, res) => {
     Book.find().populate('authorId').populate('categoryId').then((data) => {
@@ -109,9 +108,13 @@ bookRouter.put('/:id', passport.authenticate('jwt', { session: false }), upload.
     if(req.user.isAdmin != true){
         return res.status(400).json({ msg: 'UnAthorized Access' });
     }
-
-    Book.findOneAndUpdate(req.params.id, {
-        photo: req.file.path,
+    let path = null;
+    if(req.file)
+    {
+        path = req.file.path;
+    }
+    Book.findByIdAndUpdate(req.params.id, {
+        photo: path,
         name: req.body.name,
         categoryId: req.body.categoryId,
         authorId: req.body.authorId,

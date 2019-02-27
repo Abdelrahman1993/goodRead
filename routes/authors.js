@@ -118,20 +118,28 @@ authorRouter.get('/:id', (req, res) => {
 // update author by id
 authorRouter.put('/:id', passport.authenticate('jwt', { session: false }), upload.single('photo'), (req, res) => {
 
+    console.log(req.body);
+
     if(req.user.isAdmin != true){
         return res.status(400).json({ msg: 'UnAthorized Access' });
     }
 
-    Author.findOneAndUpdate(req.params.id, {
-        photo: req.file.path,
+    let path = null;
+    if(req.file)
+    {
+        path = req.file.path;
+    }
+
+    Author.findByIdAndUpdate(req.params.id, {
+        photo: path,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         dateOfBirth: req.body.dateOfBirth,
         description: req.body.description
-    }).then(() => {
-        res.send('updated')
+    }).then((data) => {
+        res.json(data)
     }).catch((err) => {
-        res.send('error in update data' + err);
+        res.json({ msg: err });
     });
 
 });
@@ -148,32 +156,18 @@ authorRouter.delete('/:id', passport.authenticate('jwt', { session: false }), (r
     // let BookIdData = Book.findOne({ authorId : AuthorIdData});
     // let BookIdData = Book.findOne({ authorId : AuthorIdData});
 
-    Book.pre('remove',function(next){
-        UserBook.remove({bookId: this._id}).exec();
-        Review.remove({bookId: this._id}).exec();
-        next();
-    }).catch((err) => {
-        res.json({msg: err});
-    });
+    // Book.pre('remove',function(next){
+    //     UserBook.remove({bookId: this._id}).exec();
+    //     Review.remove({bookId: this._id}).exec();
+    //     next();
+    // }).catch((err) => {
+    //     res.json({msg: err});
+    // });
 
     Author.findByIdAndRemove(req.params.id).then(() => {
-        console.log("line 150 remove author");
-        let authorID = req.params.id;
-        Book.find({authorId: authorID}).then((book)=>{
-            console.log("line 153 find book");
-            let BookID = book.bookId;
-            Book.findByIdAndRemove(BookID).then(()=>{
-                console.log("line 156 remove book");
-                UserBook.remove({bookId:BookID}).then(()=>{
-                    console.log("line 158 remove user book");
-                    Review.remove({bookId:BookID}).then(()=>{
-                        console.log("line 160 remove review");
-                        res.json({msg: 'deleted'});
-                    })
-                })
-
-            })
-        })
+        Book.remove({ authorId: req.params.id }).then(() => {
+            res.json({msg: 'deleted'});
+        });
     }).catch(() => {
         res.send('error in delete data ' + err);
 

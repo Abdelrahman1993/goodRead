@@ -60,7 +60,7 @@ categoryRouter.put('/:id', passport.authenticate('jwt', { session: false }), (re
     if(req.user.isAdmin != true){
         return res.status(400).json({ msg: 'UnAthorized Access' });
     }
-
+    console.log(req.body);
     Category.updateOne({_id: req.params.id},{ $set: { name: req.body.name },}).then(() => {
         res.json({msg: 'updated'})
     }).catch((err) => {

@@ -78,7 +78,7 @@ passport.use(new JwtStrategy(opt, (payload, done) => {
 app.use('/categories', categoryRouter);
 
 //authors router
-app.use('/authors', autherRouter);
+    app.use('/authors', autherRouter);
 
 // books router
 app.use('/books', bookRouter);
