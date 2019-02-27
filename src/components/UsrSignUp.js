@@ -1,8 +1,22 @@
 import React from 'react';
-import {Button, Form, FormGroup, Label, Input, Col, Row, Card, CardText, CardTitle} from 'reactstrap';
-import UrsLogin from "./UsrLogin";
-import Cookies from "universal-cookie";
+import {
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Col,
+  Row,
+  Card,
+  CardText,
+  CardTitle,
+  ListGroupItem,
+  ListGroup
+} from 'reactstrap';
 import SignUpUser from "../service/userSignUp";
+import GetBooks from "../service/book";
+import GetCategories from "../service/category";
+import GetAuthors from "../service/author";
 
 class UsrSignUp extends React.Component {
 
@@ -14,10 +28,35 @@ class UsrSignUp extends React.Component {
       email: '',
       password: '',
       // photo: '',
+      books: [],
+      authors: [],
+      categories: [],
     };
     this.hundleSignUp = this.hundleSignUp.bind(this);
   }
 
+  componentDidMount() {
+    GetBooks()
+        .then(data => {
+          this.setState({
+            books: data,
+          })
+        });
+    GetCategories()
+        .then(data => {
+          this.setState({
+            categories: data,
+            newBook: {...this.state.newBook, categoryId: data[0]._id},
+          });
+        });
+    GetAuthors()
+        .then(data => {
+          this.setState({
+            authors: data,
+            newBook: {...this.state.newBook, authorId: data[0]._id},
+          })
+        });
+  }
 
   handleUpdateFirstName = (event) => {
     console.log(event.target.value);
@@ -68,9 +107,9 @@ class UsrSignUp extends React.Component {
     return (
         <div className='container-fluid'>
           {/*<div className='row'>*/}
-            {/*<div className='col-lg-12'>*/}
-              {/*<UrsLogin/>*/}
-            {/*</div>*/}
+          {/*<div className='col-lg-12'>*/}
+          {/*<UrsLogin/>*/}
+          {/*</div>*/}
           {/*</div>*/}
           <div className='row'>
             <div className='col-lg-7 col-md-7 col-sm-7 col-xs-7 cola '>
@@ -78,37 +117,42 @@ class UsrSignUp extends React.Component {
                 <Col sm="6" className='marg'>
                   <Card body>
                     <CardTitle>Popular Authors</CardTitle>
-                    <img src="react_project\public\4.png"/>
-                    <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                    <Button>Go somewhere</Button>
+                    <ListGroup>
+                      {this.state.authors.slice(0, 3).map((author, index) =>
+                        <ListGroupItem key={index}>{author.firstName + " " + author.lastName}</ListGroupItem>
+                      )}
+                    </ListGroup>
                   </Card>
                 </Col>
                 <Col sm="6">
                   <Card body>
                     <CardTitle>Popular Books</CardTitle>
-                    <img src="react_project\public\4.png"/>
-                    <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                    <Button>Go somewhere</Button>
+                    <ListGroup>
+                      {this.state.books.slice(0, 3).map((book, index) =>
+                        <ListGroupItem key={index}>{book.name}</ListGroupItem>
+                      )}
+                    </ListGroup>
                   </Card>
                 </Col>
-
               </Row>
               <Row>
                 <Col sm="6">
                   <Card body>
                     <CardTitle>Popular Categories</CardTitle>
-                    <img src="react_project\public\4.png"/>
-                    <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                    <Button>Go somewhere</Button>
+                    <ListGroup>
+                      {this.state.categories.slice(0, 3).map((category, index) =>
+                        <ListGroupItem key={index}>{category.name}</ListGroupItem>
+                      )}
+                    </ListGroup>
                   </Card>
                 </Col>
                 {/*<Col sm="6">*/}
-                  {/*<Card body>*/}
-                    {/*<CardTitle>Special Title Treatment</CardTitle>*/}
-                    {/*<img src="react_project\public\4.png"/>*/}
-                    {/*<CardText>With supporting text below as a natural lead-in to additional content.</CardText>*/}
-                    {/*<Button>Go somewhere</Button>*/}
-                  {/*</Card>*/}
+                {/*<Card body>*/}
+                {/*<CardTitle>Special Title Treatment</CardTitle>*/}
+                {/*<img src="react_project\public\4.png"/>*/}
+                {/*<CardText>With supporting text below as a natural lead-in to additional content.</CardText>*/}
+                {/*<Button>Go somewhere</Button>*/}
+                {/*</Card>*/}
                 {/*</Col>*/}
               </Row>
             </div>
@@ -136,8 +180,8 @@ class UsrSignUp extends React.Component {
                          value={this.state.password}
                          onChange={this.handleUpdatePassword}/> </FormGroup>
                 {/*<FormGroup>*/}
-                  {/*<Label>File</Label>*/}
-                  {/*<Input type="file" name="photo"/>*/}
+                {/*<Label>File</Label>*/}
+                {/*<Input type="file" name="photo"/>*/}
                 {/*</FormGroup>*/}
                 {/*<FormGroup>*/}
                 {/*<Label >File</Label>*/}
