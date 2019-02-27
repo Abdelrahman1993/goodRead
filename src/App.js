@@ -3,8 +3,12 @@ import './App.css';
 import AdminLogin from "./components/AdminLogin"
 import {BrowserRouter,Route ,Link} from "react-router-dom";
 import AdminControl from "./components/AdminControl";
+
+// import Nav from "./components/Nav";
 import UsrLogin from "./components/UsrLogin";
+import LeftSideData from "./components/LeftSideData";
 import UsrSignUp from "./components/UsrSignUp";
+
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
 import SideBar from "./components/SideBar";
@@ -14,12 +18,13 @@ import CategoryBooks from "./components/category";
 import Books from "./components/books";
 import Authors from "./components/authors";
 
-
 class App extends React.Component {
-  render() {
+
+
+    render() {
+
     return (
         <BrowserRouter>
-                {/*<Link to="/Admin">Admin</Link>*/}
             <div className='App container-fluid' >
               <Route path="/" exact component={UsrLogin}/>
               <Route path="/" exact component={UsrSignUp}/>

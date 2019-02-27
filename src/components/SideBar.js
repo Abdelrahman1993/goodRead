@@ -8,8 +8,8 @@ class SideBar extends Component {
     render() {
         return (
 
-            <div className='sidbar'>
-                <p></p>
+            <div className='container-fluid sidbar'>
+
                 <Nav vertical>
                     <NavItem>
                         <NavLink href="#">All</NavLink>
@@ -28,8 +28,6 @@ class SideBar extends Component {
                         <NavLink  href="#">Want to Read</NavLink>
                     </NavItem>
                 </Nav>
-
-
             </div>
 
         );
