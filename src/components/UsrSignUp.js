@@ -58,7 +58,7 @@ class UsrSignUp extends React.Component {
             // 'photo': this.state.photo,
         }).then(data => {
             console.log(data);
-            alert("sign up successfully");
+            alert("sign up successfully please login");
 
         });
     }
@@ -68,7 +68,7 @@ class UsrSignUp extends React.Component {
             <div className='container-fluid' >
                 <div className='row '  >
                     <div className='offset-lg-7 col-lg-4 col-md-4 col-sm-4 col-xs-4 SignUp'>
-                        <h4>Dont Have an Account ? Create one</h4>
+                        <h4>Don`t Have an Account ? Create one</h4>
                         <hr/>
                     <Form>
                     <FormGroup>

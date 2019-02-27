@@ -27,7 +27,7 @@
 }
 
 .moveinput{margin-left: 3% ;width: 35em}
-.moveAvata{margin-right: 5%}
+/*.moveAvata{margin-right: 5%}*/
 
 .foot{
     margin-top: 3.5%;
@@ -43,4 +43,15 @@
     margin-left: 1%;
     border-right: 3px solid gold;
     padding-bottom: 10px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.thumb {
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+    margin: 2.5%;
 }

@@ -1,8 +1,20 @@
 import React , {Component} from 'react';
 import '../App.css';
-
+import Cookies from 'universal-cookie';
 
 class Nav extends Component {
+
+     constructor(props) {
+        super(props);
+        this.state = {
+            searchValue: '',
+        }
+    }
+
+    logout = () => {
+        new Cookies().remove("token");
+        window.location = "http://localhost:3000/";
+    }
 
     render() {
         return (
@@ -18,18 +30,25 @@ class Nav extends Component {
                              </a>
                          </li>
                          <li className="nav-item">
-                             <a className="nav-link" href="#">Categories</a>
+                             <a className="nav-link" href="http://localhost:3000/categories/">
+                                 Categories
+                             </a>
                          </li>
                          <li className="nav-item">
-                             <a className="nav-link" href="#">Books</a>
+                             <a className="nav-link" href="http://localhost:3000/books/">Books</a>
                          </li>
                          <li className="nav-item">
-                             <a className="nav-link" href="#">Authors</a>
+                             <a className="nav-link" href="http://localhost:3000/authors/">Authors</a>
                          </li>
-                         <li className="nav-item moveinput">
-                             <input className="form-control" type="text" placeholder="Search" aria-label="Search"/>
+                         <li className="nav-item moveinput" style={{width:300}}>
+                             <input className="form-control" type="text"
+                                    placeholder="Search" aria-label="Search"/>
                          </li>
-
+                         <li className="nav-item ">
+                             <button style={{background: "none",border: "none"}}
+                                     className="nav-link"
+                                >Search</button>
+                         </li>
                      </ul>
 
                      <ul className="navbar-nav ml-auto nav-flex-icons moveAvata">
@@ -41,14 +60,14 @@ class Nav extends Component {
                              </a>
                          </li>
                          <li className="nav-item ">
-                             <a className="nav-link" href="#">UserName</a>
+                             <a className="nav-link" href="#">
+                                 {new Cookies().get("username")}
+                             </a>
                          </li>
-                         <li className="nav-item ">
-                             <a className="nav-link">|</a>
-                         </li>
-
-                         <li className="nav-item ">
-                             <a className="nav-link" href="#">Logout</a>
+                         <li className="nav-item " width="25">
+                             <button style={{background: "none",border: "none"}}
+                                     className="nav-link"
+                                onClick={this.logout}>Logout</button>
                          </li>
                      </ul>
                  </div>

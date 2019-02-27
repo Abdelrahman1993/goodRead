@@ -37,9 +37,11 @@ class UrsLogin extends React.Component {
           if (data.token) {
             let cookies = new Cookies();
             cookies.set('token', data.token, {path: '/'});
-            // window.location = "http://localhost:3000/";
+            cookies.set('username', data.name, {path: '/'});
+            window.location = "http://localhost:3000/home";
           } else {
-            // window.location = "http://localhost:3000/";
+              alert("invalid email or password");
+            window.location = "http://localhost:3000/";
           }
         });
     }
