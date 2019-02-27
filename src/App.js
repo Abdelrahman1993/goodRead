@@ -16,12 +16,12 @@ class App extends React.Component {
         <BrowserRouter>
                 {/*<Link to="/Admin">Admin</Link>*/}
             <div className='App container-fluid' >
-               <Route path="/" exact component={EditCategory}/>
-                {/*<Route path="/" exact component={UsrSignUp}/>*/}
-                <Route path="/" exact component={SideBar}/>
+               <Route path="/" exact component={UsrLogin}/>
+                <Route path="/" exact component={UsrSignUp}/>
+                {/*<Route path="/" exact component={SideBar}/>*/}
 
-              <Route path="/" exact component={Nav}/>
-              <Route path="/" exact component={SideBar}/>
+              {/*<Route path="/" exact component={Nav}/>*/}
+              {/*<Route path="/" exact component={SideBar}/>*/}
               <Route path="/Admin" exact component={AdminLogin} />
               <Route path="/AdminControls" component={AdminControl}/>
             </div>
