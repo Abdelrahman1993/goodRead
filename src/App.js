@@ -26,6 +26,7 @@ class App extends React.Component {
                 <Route path="/" exact component={UsrSignUp}/>
                 {/*<Route path="/" exact component={SideBar}/>*/}
                 <Route path="/authorbook.css" exact component={Nav}/>
+                <Route path="/bookprofile" exact component={Nav}/>
                 <Route path="/bookprofile" exact component={Bookprofil}/>
                 <Route path="/bookprofile" exact component={BookReviewAlready}/>
                 <Route path="/bookprofile" exact component={Bookreview}/>
