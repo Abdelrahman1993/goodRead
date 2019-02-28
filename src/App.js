@@ -4,7 +4,6 @@ import AdminLogin from "./components/AdminLogin"
 import {BrowserRouter,Route ,Link} from "react-router-dom";
 import AdminControl from "./components/AdminControl";
 
-// import Nav from "./components/Nav";
 import UsrLogin from "./components/UsrLogin";
 import LeftSideData from "./components/LeftSideData";
 import UsrSignUp from "./components/UsrSignUp";
@@ -17,9 +16,10 @@ import EditCategory from "./components/EditCategory";
 import CategoryBooks from "./components/category";
 import Books from "./components/books";
 import Authors from "./components/authors";
+import Search from "./components/search";
+
 
 class App extends React.Component {
-
 
     render() {
 
@@ -28,6 +28,8 @@ class App extends React.Component {
             <div className='App container-fluid' >
               <Route path="/" exact component={UsrLogin}/>
               <Route path="/" exact component={UsrSignUp}/>
+
+              <Route path="/search/:value" exact component={Search}/>
 
               <Route path="/home" exact component={Nav}/>
               <Route path="/home" exact component={SideBar}/>

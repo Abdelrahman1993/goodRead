@@ -2,6 +2,7 @@ import React ,{Component} from 'react';
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
 import GetBooks from "../service/book";
+import Cookies from "universal-cookie";
 
 class Books extends Component {
 
@@ -13,6 +14,12 @@ class Books extends Component {
   }
 
   componentDidMount(){
+
+    let cookies = new Cookies();
+    if (!cookies.get('token')) {
+      window.location = "http://localhost:3000/";
+    }
+
     GetBooks()
     .then(data => {
       this.setState({

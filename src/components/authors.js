@@ -2,6 +2,7 @@ import React ,{Component} from 'react';
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button , CardLink} from 'reactstrap';
 import GetAuthors from "../service/author";
+import Cookies from "universal-cookie";
 
 class Authors extends Component {
 
@@ -13,6 +14,12 @@ class Authors extends Component {
   }
 
   componentDidMount(){
+
+    let cookies = new Cookies();
+    if (!cookies.get('token')) {
+      window.location = "http://localhost:3000/";
+    }
+
     GetAuthors()
     .then(data => {
       this.setState({

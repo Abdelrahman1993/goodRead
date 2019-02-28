@@ -1,6 +1,7 @@
 import React , {Component} from 'react';
 import {Table} from "reactstrap";
 import GetCategories from "../service/category";
+import Cookies from "universal-cookie";
 
 
 class Categories extends Component {
@@ -13,6 +14,10 @@ class Categories extends Component {
     }
 
     componentDidMount(){
+      let cookies = new Cookies();
+      if (!cookies.get('token')) {
+        window.location = "http://localhost:3000/";
+      }
       GetCategories()
       .then(data => {
         this.setState({

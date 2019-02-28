@@ -2,6 +2,7 @@ import React ,{Component} from 'react';
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
 import GetBooks from "../service/book";
+import Cookies from "universal-cookie";
 
 class CategoryBooks extends Component {
 
@@ -15,6 +16,10 @@ class CategoryBooks extends Component {
   }
 
   componentDidMount(){
+    let cookies = new Cookies();
+    if (!cookies.get('token')) {
+      window.location = "http://localhost:3000/";
+    }
     GetBooks()
     .then(data => {
       console.log(data);
@@ -35,11 +40,11 @@ class CategoryBooks extends Component {
         <div>
           <h1>{this.state.catName}</h1>
           {this.state.books.map((book , index) =>
-            <div key={index}>
+            <div className="thumb" key={index}>
             <Card>
-              <CardImg top width="50px" height="50px"
-                       src={"http://localhost:4000/"+book.photo}
-                       alt="book image"/>
+              <img style={{width:200, height:100}}
+                   src={"http://localhost:4000/"+book.photo}
+                   alt="Card image cap"/>
               <CardBody>
                 <CardTitle>
                   <a href={"http://localhost:3000/books/"+book._id}>
