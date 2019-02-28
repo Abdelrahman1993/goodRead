@@ -110,13 +110,8 @@ class UsrSignUp extends React.Component {
                                     <Button>Go somewhere</Button>
                                 </Card>
                             </Col>
-
                         </Row>
-
-
                     </div>
-
-
                     <div className='col-lg-4 col-md-4 col-sm-4 col-xs-4 '>
                         <h4>Dont Have an Account ? Create one</h4>
                         <hr/>

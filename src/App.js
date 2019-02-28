@@ -1,29 +1,31 @@
 import React from 'react';
 import './App.css';
-import AdminLogin from "./components/AdminLogin"
 import {BrowserRouter,Route ,Link} from "react-router-dom";
-import AdminControl from "./components/AdminControl";
+import Nav from "./components/Nav";
 
-// import Nav from "./components/Nav";
-import UsrLogin from "./components/UsrLogin";
-import LeftSideData from "./components/LeftSideData";
 import UsrSignUp from "./components/UsrSignUp";
+import Footer from "./components/Footer";
+import SideBar from "./components/SideBar";
+import TableContent from "./components/TableContent";
 
 
 
 
 class App extends React.Component {
 
-
     render() {
 
     return (
         <BrowserRouter>
+           <div className='App'>
+              <Route path='/Home' exact component={Nav}/>
+               {/*<Route Path='/Home' exact component={SideBar}/>*/}
+               <Route Path='/Home' exact component={TableContent}/>
+               <Route path='/' exact component={UsrSignUp}/>
+               <Route path='/' exact component={Footer}/>
 
 
-            <Route path="/" exact component={UsrSignUp}/>
-
-
+           </div>
         </BrowserRouter>
     );
   }

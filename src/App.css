@@ -1,10 +1,14 @@
 .App{
   height: 100%;
   width: 100%;
-    background-color: black;
+
 
 }
+.tableWidth{
 
+    width: 50%;
+    background-color: blueviolet;
+}
 .UsrLogin{
     margin-top: 0.5%;
     height: 100%;
