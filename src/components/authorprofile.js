@@ -1,35 +1,54 @@
-import React from 'react';
-import {
-    Card, CardText, CardBody
-} from 'reactstrap';
-import '../Styles/authorbook.css';
+import React, {Component} from 'react';
+import {Card} from 'reactstrap';
+import '../Styles/bookprofile.css';
+import Cookies from "universal-cookie";
+import GetAuthor from "../service/currentAuthor";
 
-const Authorprofil = (props) => {
+class AuthorProfile extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state={
+      currentAuthor : '',
+      authorId : this.props.match.params.id,
+    };
+  }
+
+  componentDidMount(){
+    let cookies = new Cookies();
+    if (!cookies.get('token')) {
+      window.location = "http://localhost:3000/";
+    }
+
+    GetAuthor(this.state.authorId).then((data) => {
+      console.log(data);
+      this.setState({
+        currentAuthor: data,
+      });
+    })
+  }
+
+  render() {
+
     return (
-        <div className="container-fluid ">
-            <div className="row AuthorProfile">
-                <div className="col_trainings authorImg">
-                    <Card>
-                        <img width="100%" height="280px" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-                    </Card>
-
-                </div>
-                {/*<div className="col-md-1 col_downloads"></div>*/}
-
-                <div className="authorInfo col_downloads">
-                    <h1>Author name</h1>
-                    <h1>by ==============</h1>
-
-                    <CardText>
-                        Some quick example text to build on the card title
-                        and make up the bulk of the card's content.
-                    </CardText>
-                </div>
+        <div className="container-fluid">
+          <div className="row BookPage">
+            <div className="col_trainings BookImg">
+              <div className="Img">
+                  <img style={{width:100, height:100}}
+                       src={"http://localhost:4000/"+this.state.currentAuthor.photo}
+                       alt="Card image cap"/>
+              </div>
             </div>
 
-
+            <div className="col_downloads BookData">
+              <h1>{this.state.currentAuthor.firstName + " " + this.state.currentAuthor.lastName}</h1>
+              <h3>{(""+this.state.currentAuthor.dateOfBirth).substr(0, 10)}</h3>
+            </div>
+          </div>
         </div>
     );
+  }
 };
 
-export default Authorprofil;
+export default AuthorProfile;
