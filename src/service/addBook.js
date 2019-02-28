@@ -1,6 +1,6 @@
 import Cookies from "universal-cookie";
 
-export default function EditBook(data) {
+export default function AddBook(data) {
   console.log(data);
   const formData = new FormData();
   formData.append('name', data.name);
