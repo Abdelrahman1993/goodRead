@@ -40,6 +40,7 @@ class App extends React.Component {
         <BrowserRouter>
            <div className='App'>
 
+
               <Route path='/' exact component={UsrLogin}/>
               <Route path='/' exact component={UsrSignUp}/>
               <Route path='/' exact component={Footer}/>
@@ -62,7 +63,8 @@ class App extends React.Component {
                <Route path='/authorProfile' exact component={AuthorBook}/>
 
 <Route path='/ddd' exact component={BookAthor}/>
-
+               <Route path='/admin' exact component={AdminLogin}/>
+               <Route path='/adminControl' exact component={AdminControl}/>
                {/*<Route Path='/Home' exact component={SideBar}/>*/}
                {/*<Route Path='/' exact component={TableContent}/>*/}
                {/*<Route path='/' exact component={UsrSignUp}/>*/}

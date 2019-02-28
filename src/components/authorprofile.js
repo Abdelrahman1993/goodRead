@@ -18,7 +18,7 @@ const Authorprofil = (props) => {
 
                 <div className="authorInfo col_downloads">
                     <h1>Author name</h1>
-                    <h1>by ==============</h1>
+                    <h1>by =======</h1>
 
                     <CardText>
                         Some quick example text to build on the card title
