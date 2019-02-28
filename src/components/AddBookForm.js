@@ -256,7 +256,10 @@ class AddBookForm extends Component{
                     </ModalBody>
                     <ModalFooter>
                         <Button color="primary" onClick={this.handling_modal}
-                                onClick={this.handle_EditBook}>Edit</Button>{' '}
+                                onClick={this.handle_EditBook}>
+                            Edit
+                        </Button>
+                        {' '}
                         <Button color="secondary" onClick={this.handling_modal}>Cancel</Button>
                     </ModalFooter>
                 </Modal>

@@ -1,6 +1,5 @@
 import React ,{Component} from 'react';
-import { Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button } from 'reactstrap';
+import { Card, CardBody, CardTitle } from 'reactstrap';
 import GetBooks from "../service/book";
 import Cookies from "universal-cookie";
 
