@@ -4,6 +4,10 @@ import {
     CardTitle, CardSubtitle, Input, FormGroup
 } from 'reactstrap';
 import '../Styles/bookprofile.css';
+import StarRating from "./StarRating";
+import BookReview from "./BookReview";
+import BookReviewAlready from "./bookReviewAlready";
+import BookAthor from "./book_author";
 
 const Bookprofil = (props) => {
     return (
@@ -23,7 +27,7 @@ const Bookprofil = (props) => {
                         </Input>
 
                         <CardBody>
-                            <p>user eveluation</p>
+                            <div className="stw"><StarRating /></div>
                         </CardBody>
                     </div>
                 </div>
@@ -39,8 +43,12 @@ const Bookprofil = (props) => {
                     </CardText>
                 </div>
             </div>
-
-
+            <div>
+                <BookReviewAlready />
+            </div>
+            <div>
+                {/*<BookAthor />*/}
+            </div>
         </div>
     );
 };
