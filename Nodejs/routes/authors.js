@@ -74,7 +74,7 @@ authorRouter.post('/', passport.authenticate('jwt', { session: false }),
                 return res.status(400).json({ name: 'author already exists' });
             }
             else{
-                let p = '2019-03-02T08:14:06.451Zauthor.png';
+                let p = 'uploads/2019-03-02T08:14:06.451Zauthor.png';
                 if(req.file)
                 {
                    p = req.file.path;

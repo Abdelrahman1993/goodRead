@@ -79,18 +79,16 @@ categoryRouter.delete('/:id', passport.authenticate('jwt', { session: false }), 
     }
     
     Category.findByIdAndRemove(req.params.id).then(() => {
-        Book.remove({ categoryId: req.params.id }).then(() => {
-
-        }
+        Book.remove({categoryId: req.params.id}).then(() => {
             let catID = req.params.id;
-            Book.find({categoryId: catID}).then((book)=>{
+            Book.find({categoryId: catID}).then((book) => {
                 console.log("line 88 find book");
                 let BookID = book.bookId;
-                Book.findByIdAndRemove(BookID).then(()=>{
+                Book.findByIdAndRemove(BookID).then(() => {
                     console.log("line 91 remove book");
-                    UserBook.remove({bookId:BookID}).then(()=>{
+                    UserBook.remove({bookId: BookID}).then(() => {
                         console.log("line 93 remove user book");
-                        Review.remove({bookId:BookID}).then(()=>{
+                        Review.remove({bookId: BookID}).then(() => {
                             console.log("line 95 remove review");
                             res.json({msg: 'deleted'});
                         })
@@ -100,8 +98,9 @@ categoryRouter.delete('/:id', passport.authenticate('jwt', { session: false }), 
             })
 
         }).catch(() => {
-        res.json({msg: err});
+            res.json({msg: err});
         });
+    })
 });
 
 
