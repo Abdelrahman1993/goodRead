@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="60788716-a369-4156-8e50-83d3ae876f45" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/authors.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/authors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/book.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/book.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/categories.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -33,12 +32,17 @@
         <entry file="file://$PROJECT_DIR$/routes/book.js">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+            <state relative-caret-position="3480">
+              <caret line="145" column="26" selection-start-line="145" selection-start-column="26" selection-end-line="145" selection-end-column="26" />
+=======
+<<<<<<< HEAD
             <state relative-caret-position="135">
               <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
 =======
             <state relative-caret-position="532">
               <caret line="145" column="26" lean-forward="true" selection-start-line="145" selection-start-column="26" selection-end-line="145" selection-end-column="26" />
 >>>>>>> e3e7657b0f166f83b8acbfc66881a160d5094465
+>>>>>>> c9d5c330d6ac19e3e15acac8fb5107571843ee9b
             </state>
           </provider>
         </entry>
@@ -52,13 +56,20 @@
 =======
         <entry file="file://$PROJECT_DIR$/routes/users.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1563">
+            <state relative-caret-position="2208">
               <caret line="92" column="19" selection-start-line="92" selection-start-column="14" selection-end-line="92" selection-end-column="19" />
 >>>>>>> e3e7657b0f166f83b8acbfc66881a160d5094465
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/authors.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="3" selection-start-line="3" selection-end-line="4" selection-end-column="43" />
+=======
 <<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/categories.js">
@@ -72,11 +83,15 @@
             <state relative-caret-position="491">
               <caret line="174" column="13" selection-start-line="174" selection-start-column="13" selection-end-line="174" selection-end-column="13" />
 >>>>>>> e3e7657b0f166f83b8acbfc66881a160d5094465
+>>>>>>> c9d5c330d6ac19e3e15acac8fb5107571843ee9b
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
+        <entry file="file://$PROJECT_DIR$/models/user.js">
+=======
 <<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/routes/authors.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -84,17 +99,30 @@
               <caret line="46" column="4" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
 =======
         <entry file="file://$PROJECT_DIR$/routes/review.js">
+>>>>>>> c9d5c330d6ac19e3e15acac8fb5107571843ee9b
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-493" />
+            <state relative-caret-position="492">
+              <caret line="27" column="33" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="33" />
+            </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/review.js">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/userBook.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="252">
+              <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
+=======
             <state relative-caret-position="-277">
               <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
 >>>>>>> e3e7657b0f166f83b8acbfc66881a160d5094465
+>>>>>>> c9d5c330d6ac19e3e15acac8fb5107571843ee9b
             </state>
           </provider>
         </entry>
@@ -103,12 +131,25 @@
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+            <state relative-caret-position="2184">
+=======
+<<<<<<< HEAD
             <state relative-caret-position="283">
               <caret line="28" selection-start-line="28" selection-end-line="28" />
 =======
             <state relative-caret-position="251">
+>>>>>>> c9d5c330d6ac19e3e15acac8fb5107571843ee9b
               <caret line="91" column="36" selection-start-line="91" selection-start-column="36" selection-end-line="91" selection-end-column="36" />
 >>>>>>> e3e7657b0f166f83b8acbfc66881a160d5094465
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/routes/categories.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="156">
+              <caret line="96" column="26" lean-forward="true" selection-start-line="96" selection-start-column="26" selection-end-line="96" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -135,13 +176,18 @@
         <option value="$PROJECT_DIR$/models/author.js" />
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
         <option value="$PROJECT_DIR$/routes/categories.js" />
 >>>>>>> e3e7657b0f166f83b8acbfc66881a160d5094465
+>>>>>>> c9d5c330d6ac19e3e15acac8fb5107571843ee9b
         <option value="$PROJECT_DIR$/models/book.js" />
         <option value="$PROJECT_DIR$/routes/categories.js" />
         <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/routes/book.js" />
         <option value="$PROJECT_DIR$/routes/authors.js" />
+        <option value="$PROJECT_DIR$/routes/userBook.js" />
+        <option value="$PROJECT_DIR$/routes/categories.js" />
       </list>
     </option>
   </component>
@@ -159,6 +205,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -173,14 +220,21 @@
 =======
               <item name="goodRead" type="b2602c69:ProjectViewProjectNode" />
               <item name="goodRead" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="goodRead" type="b2602c69:ProjectViewProjectNode" />
+              <item name="goodRead" type="462c0819:PsiDirectoryNode" />
+=======
 >>>>>>> e3e7657b0f166f83b8acbfc66881a160d5094465
+>>>>>>> c9d5c330d6ac19e3e15acac8fb5107571843ee9b
               <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -220,17 +274,26 @@
 =======
       <workItem from="1551164804120" duration="1784000" />
       <workItem from="1551190290910" duration="1039000" />
+<<<<<<< HEAD
+      <workItem from="1551192497950" duration="10558000" />
+      <workItem from="1551208092938" duration="536000" />
+=======
       <workItem from="1551192497950" duration="9427000" />
 >>>>>>> e3e7657b0f166f83b8acbfc66881a160d5094465
+>>>>>>> c9d5c330d6ac19e3e15acac8fb5107571843ee9b
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
 <<<<<<< HEAD
+    <option name="totallyTimeSpent" value="50062000" />
+=======
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="48647000" />
 =======
     <option name="totallyTimeSpent" value="48395000" />
 >>>>>>> e3e7657b0f166f83b8acbfc66881a160d5094465
+>>>>>>> c9d5c330d6ac19e3e15acac8fb5107571843ee9b
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
@@ -238,6 +301,11 @@
     <layout>
       <window_info id="Favorites" order="0" sideWeight="0.50161815" side_tool="true" weight="0.12356479" />
       <window_info id="npm" order="1" side_tool="true" />
+<<<<<<< HEAD
+      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49838188" visible="true" weight="0.13559322" />
+      <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="0" visible="true" weight="0.35287732" />
+=======
 <<<<<<< HEAD
       <window_info active="true" content_ui="combo" id="Project" order="2" sideWeight="0.49838188" visible="true" weight="0.21416804" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
@@ -247,6 +315,7 @@
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" visible="true" weight="0.35396308" />
 >>>>>>> e3e7657b0f166f83b8acbfc66881a160d5094465
+>>>>>>> c9d5c330d6ac19e3e15acac8fb5107571843ee9b
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="2" />
       <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
@@ -272,10 +341,17 @@
     <entry file="file://$PROJECT_DIR$/models/userBook.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/routes/admin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+=======
     <entry file="file://$PROJECT_DIR$/models/user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="27" column="33" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="33" />
+>>>>>>> c9d5c330d6ac19e3e15acac8fb5107571843ee9b
         </state>
       </provider>
     </entry>
@@ -290,6 +366,25 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/author.js">
+<<<<<<< HEAD
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="10" column="38" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/book.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="73" selection-start-line="5" selection-start-column="73" selection-end-line="5" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/book.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3480">
+          <caret line="145" column="26" selection-start-line="145" selection-start-column="26" selection-end-line="145" selection-end-column="26" />
+=======
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="10" column="38" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="38" />
@@ -339,51 +434,67 @@
         <state relative-caret-position="251">
           <caret line="91" column="36" selection-start-line="91" selection-start-column="36" selection-end-line="91" selection-end-column="36" />
 >>>>>>> e3e7657b0f166f83b8acbfc66881a160d5094465
+>>>>>>> c9d5c330d6ac19e3e15acac8fb5107571843ee9b
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/book.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="5" column="73" selection-start-line="5" selection-start-column="73" selection-end-line="5" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/userBook.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-277">
-          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/review.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-493" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/users.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1563">
+        <state relative-caret-position="2208">
           <caret line="92" column="19" selection-start-line="92" selection-start-column="14" selection-end-line="92" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/book.js">
+    <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2184">
+          <caret line="91" column="36" selection-start-line="91" selection-start-column="36" selection-end-line="91" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="27" column="33" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/authors.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="3" selection-start-line="3" selection-end-line="4" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/review.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/userBook.js">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="252">
+          <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
+=======
 <<<<<<< HEAD
         <state relative-caret-position="135">
           <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
 =======
         <state relative-caret-position="532">
           <caret line="145" column="26" lean-forward="true" selection-start-line="145" selection-start-column="26" selection-end-line="145" selection-end-column="26" />
+>>>>>>> c9d5c330d6ac19e3e15acac8fb5107571843ee9b
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/authors.js">
+    <entry file="file://$PROJECT_DIR$/routes/categories.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="156">
+          <caret line="96" column="26" lean-forward="true" selection-start-line="96" selection-start-column="26" selection-end-line="96" selection-end-column="26" />
+=======
         <state relative-caret-position="491">
           <caret line="174" column="13" selection-start-line="174" selection-start-column="13" selection-end-line="174" selection-end-column="13" />
 >>>>>>> e3e7657b0f166f83b8acbfc66881a160d5094465
+>>>>>>> c9d5c330d6ac19e3e15acac8fb5107571843ee9b
         </state>
       </provider>
     </entry>

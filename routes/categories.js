@@ -4,6 +4,8 @@ const Book = require('../models/book');
 const Category = require('../models/category');
 const categoryRouter = express.Router();
 const passport = require('passport');
+const UserBook = require('../models/userBook');
+const Review = require('../models/review');
 
 
 //get all categories
@@ -78,11 +80,28 @@ categoryRouter.delete('/:id', passport.authenticate('jwt', { session: false }), 
     
     Category.findByIdAndRemove(req.params.id).then(() => {
         Book.remove({ categoryId: req.params.id }).then(() => {
-            res.json({msg: 'deleted'});
-        });
-    }).catch(() => {
+
+        }
+            let catID = req.params.id;
+            Book.find({categoryId: catID}).then((book)=>{
+                console.log("line 88 find book");
+                let BookID = book.bookId;
+                Book.findByIdAndRemove(BookID).then(()=>{
+                    console.log("line 91 remove book");
+                    UserBook.remove({bookId:BookID}).then(()=>{
+                        console.log("line 93 remove user book");
+                        Review.remove({bookId:BookID}).then(()=>{
+                            console.log("line 95 remove review");
+                            res.json({msg: 'deleted'});
+                        })
+                    })
+
+                })
+            })
+
+        }).catch(() => {
         res.json({msg: err});
-    });
+        });
 });
 
 
