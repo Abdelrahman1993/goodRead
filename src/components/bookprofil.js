@@ -4,6 +4,9 @@ import '../Styles/bookprofile.css';
 import Cookies from "universal-cookie";
 import GetBook from "../service/currentBook";
 import SetStatusReading from "../service/updateReadingStatus";
+import BookReview from "./BookReview";
+import BookReviewAlready from "./bookReviewAlready";
+import BookAthor from "./book_author";
 
 
 class BookProfile extends Component {

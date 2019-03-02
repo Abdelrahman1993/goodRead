@@ -32,16 +32,15 @@ class AuthorProfile extends Component {
 
     return (
         <div className="container-fluid">
-          <div className="row BookPage">
-            <div className="col_trainings BookImg">
+          <div className="row AuthorProfile">
+            <div className="col_trainings authorImg">
               <div className="Img">
                   <img style={{width:100, height:100}}
                        src={"http://localhost:4000/"+this.state.currentAuthor.photo}
                        alt="Card image cap"/>
               </div>
             </div>
-
-            <div className="col_downloads BookData">
+            <div className="col_downloads authorInfo">
               <h1>{this.state.currentAuthor.firstName + " " + this.state.currentAuthor.lastName}</h1>
               <h3>{(""+this.state.currentAuthor.dateOfBirth).substr(0, 10)}</h3>
             </div>

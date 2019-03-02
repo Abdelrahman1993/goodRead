@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter,Route ,Link} from "react-router-dom";
+import {BrowserRouter,Route } from "react-router-dom";
 
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
@@ -18,12 +18,15 @@ import BookProfile from "./components/bookprofil";
 
 import Authors from "./components/authors";
 import AuthorProfile from "./components/authorprofile";
-import AuthorBook from "./components/authorbookprofile";
+// import AuthorBook from "./components/authorbookprofile";
+import AuthorBook from "./components/author_books";
 
 import Categories from "./components/categories";
 import Category from "./components/category";
 
 import Search from "./components/search";
+import Book from "./components/book_page";
+import BookAthor from "./components/book_author";
 
 
 class App extends React.Component {
@@ -70,7 +73,6 @@ class App extends React.Component {
 
             <Route path="/Admin" exact component={AdminLogin} />
             <Route path="/AdminControls" exact component={AdminControl}/>
-
           </div>
         </BrowserRouter>
     );

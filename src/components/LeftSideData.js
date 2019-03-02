@@ -12,7 +12,7 @@ class LeftSideData extends Component{
                             <div className='Head'>
                                 <h4>Popular Author</h4>
                             </div>
-                            <div className='Content'>
+                            <div className='the_auth Content'>
                                 <h3>names here</h3>
                             </div>
                         </div>

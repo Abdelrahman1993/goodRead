@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import Cookies from "universal-cookie";
 import LoginUser from "../service/userLogin";
+import "../App.css"
 
 class UrsLogin extends React.Component {
 
@@ -49,24 +50,35 @@ class UrsLogin extends React.Component {
 
     render() {
         return (
-            <div className='container-fluid' >
-                <div className='row '  >
-                    <div className='col-lg-12 UsrLogin'>
+            <div className='container-fluid ' >
+                <div className='row '>
+                    <div className='col-lg-12 '>
+                        <div className="logo">
+<div className=" UsrLogin loginDivSize" >
+    <FormGroup className=" UsrLogin mb-2 mr-sm-2 mb-sm-0">
+        <Input className="loginInput" type="name" name="name"
+               placeholder="User name"
+               value={this.state.email}
+               onChange={this.handleUpdateEmail}/>
+    </FormGroup>
+</div>
+                        <div className="UsrLogin loginDivSize" >
+                            <FormGroup className="UsrLogin  mb-2 mr-sm-2 mb-sm-0">
+                                <Input  type="password" name="password"
+                                       placeholder="Password"
+                                       value={this.state.password}
+                                       onChange={this.handleUpdatePassword}/>
+                            </FormGroup>
+                    </div>
+
+<div className=" UsrLogin loginDivSize">
+    <Button className='btnMrgn' onClick={this.hundleLogin}>Login</Button>
+
+</div>
+                        </div>
             {/*<Form inline  className='  offset-lg-7 offset-md-7 offset-sm-7 offset-xs-7 ' >*/}
-                <FormGroup className=" mb-2 mr-sm-2 mb-sm-0">
-                    <Input type="name" name="name"
-                           placeholder="User name"
-                           value={this.state.email}
-                           onChange={this.handleUpdateEmail}/>
-                </FormGroup>
-                <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                    <Input type="password" name="password"
-                           placeholder="Password"
-                           value={this.state.password}
-                           onChange={this.handleUpdatePassword}/>
-                </FormGroup>
-                <Button onClick={this.hundleLogin}>Login</Button>
-            {/*</Form>*/}
+
+
                     </div>
                 </div>
             </div>

@@ -58,9 +58,7 @@ class BookReview extends Component {
         return (
             <div className='container-fluid'>
                 <div className="input-group mb-3">
-                    <div className="input-group-prepend">
-                        <img src="2.jpg" alt="error" width="45" height="45"/>
-                    </div>
+
                     <input type="text" className="form-control form-control-lg" id="exampleInputPassword1"
                            placeholder="write your review"
                            // value={this.state.body}
