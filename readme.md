@@ -60,46 +60,46 @@ you need to install :-
 ### photo of site
 
 ###### admin login Page
-![alt text]()
+![alt text](https://github.com/aya77/goodRead/blob/master/imgs/admin_login.png)
 
 ###### adminControls Page for categories
-![alt text]()
+![alt text](https://github.com/aya77/goodRead/blob/master/imgs/admin_categories.png)
 
 ###### adminControls Page for books
-![alt text]()
+![alt text](https://github.com/aya77/goodRead/blob/master/imgs/admin_books.png)
 
 ###### adminControls Page for authors
-![alt text]()
+![alt text](https://github.com/aya77/goodRead/blob/master/imgs/admin_authors.png)
 
 ###### adminControls Page for add category
-![alt text]()
+![alt text](https://github.com/aya77/goodRead/blob/master/imgs/admin_add_category.png)
 
 ###### adminControls Page for add book
-![alt text]()
+![alt text](https://github.com/aya77/goodRead/blob/master/imgs/admin_add_book.png)
 
 ###### adminControls Page for add author
-![alt text]()
+![alt text](https://github.com/aya77/goodRead/blob/master/imgs/admin_add_author.png)
 
 ###### user login/signUp Page
-![alt text]()
+![alt text](https://github.com/aya77/goodRead/blob/master/imgs/user_login_signup.png)
 
 ###### user categories page
-![alt text]()
+![alt text](https://github.com/aya77/goodRead/blob/master/imgs/categories.png)
 
 ###### user books page
-![alt text]()
+![alt text](https://github.com/aya77/goodRead/blob/master/imgs/books.png)
 
 ###### user authors page
-![alt text]()
+![alt text](https://github.com/aya77/goodRead/blob/master/imgs/authors.png)
 
 ###### user home page
-![alt text]()
+![alt text](https://github.com/aya77/goodRead/blob/master/imgs/home.png)
 
 ###### user search results page
-![alt text]()
+![alt text](https://github.com/aya77/goodRead/blob/master/imgs/search_resultes.png)
 
 ###### user book profile page
-![alt text]()
+![alt text](https://github.com/aya77/goodRead/blob/master/imgs/book_profile.png)
 
 ###### user author profile page
-![alt text]()
+![alt text](https://github.com/aya77/goodRead/blob/master/imgs/author_profile.png)
