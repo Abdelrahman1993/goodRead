@@ -1,13 +1,18 @@
+
+ // eslint-disable-next-line
+
 import React, {Component} from 'react';
-import {Progress, CardBody, Input} from 'reactstrap';
+import {Progress, CardBody, Input, ListGroup,
+  ListGroupItem, ListGroupItemHeading, ListGroupItemText} from 'reactstrap';
 import '../Styles/bookprofile.css';
 import Cookies from "universal-cookie";
 import GetBook from "../service/currentBook";
 import SetStatusReading from "../service/updateReadingStatus";
-import BookReview from "./BookReview";
-import BookReviewAlready from "./bookReviewAlready";
-import BookAthor from "./book_author";
-
+import GetReview from "../service/getReview";
+import {Link} from "react-router-dom";
+import AddCategory from "../service/addCategory";
+import GetCategories from "../service/category";
+import AddReview from "../service/addReview";
 
 class BookProfile extends Component {
 
@@ -18,6 +23,8 @@ class BookProfile extends Component {
       bookId : this.props.match.params.id,
       author: '',
       category: '',
+      reviews: [],
+      newReview: '',
     };
   }
 
@@ -28,14 +35,22 @@ class BookProfile extends Component {
     }
 
     GetBook(this.state.bookId).then((data) => {
-      console.log(data);
-      this.setState({
-        currentBook: data,
-        author: data.authorId,
-        category: data.categoryId,
-      });
+      GetReview(this.state.bookId).then((reviews)=>{
+        console.log(reviews);
+        this.setState({
+          currentBook: data,
+          author: data.authorId,
+          category: data.categoryId,
+          reviews: reviews,
+        });
+      })
     })
+  }
 
+  handle_update_review = (event) => {
+    this.setState({
+      newReview: event.target.value,
+    });
   }
 
   handle_status_reading = (event) => {
@@ -47,6 +62,29 @@ class BookProfile extends Component {
     }).then((data)=>{
       console.log(data);
     })
+  }
+
+  handle_add_review = () => {
+    if((/^ *$/.test(this.state.newReview)) || (/^$/.test(this.state.newReview))) {
+        alert("please enter valid review");
+    }
+    else {
+        let currentUser = new Cookies().get('currentUser');
+        AddReview({
+        'body': this.state.newReview,
+        'userId': currentUser._id,
+        'bookId': this.state.bookId,
+        }).then(data => {
+            console.log(data);
+            GetReview(this.state.bookId).then((reviews)=> {
+              this.setState({
+                newReview : "",
+                reviews: reviews,
+            });
+            alert("Review added successfully");
+            })
+          });
+    }
   }
 
   render() {
@@ -78,24 +116,42 @@ class BookProfile extends Component {
 
             <div className="col_downloads BookData">
               <h1>{this.state.currentBook.name}</h1>
+
               <h3>
-                <a href={"http://localhost:3000/authors/"+this.state.author._id}>
-                  {"By " + this.state.author.firstName + " " +
-                    this.state.author.lastName
-                  }
-                </a>
+                <Link to={'/authors/'+this.state.author._id}>
+                    {"By "+ this.state.author.firstName + " " +
+                    this.state.author.lastName}
+                </Link>
               </h3>
               <h3>
-                <a href={"http://localhost:3000/categories/"+this.state.category._id
-                      +"/"+this.state.category.name}>
-                  {this.state.category.name + " Category"}
-                </a>
+                <Link to={"categories/"+this.state.category._id+"/"+this.state.category.name}>
+                    {this.state.category.name + " Category"}
+                </Link>
               </h3>
               <p>
                 <div className="text-center">{this.state.currentBook.rate+"%"}</div>
                 <Progress value={this.state.currentBook.rate}/>
               </p>
             </div>
+          </div>
+          <h1>Reviews</h1>
+          <div stclassName="row">
+            <input style={{"width":"80%"}} type="text" value={this.state.newReview}
+              onChange={this.handle_update_review}
+            />
+            <button onClick={this.handle_add_review}>add Your Review</button>
+            <ListGroup>
+              {this.state.reviews.map((rev)=>
+                <ListGroupItem>
+                  <ListGroupItemHeading>
+                    {rev.userId.firstName + " " + rev.userId.lastName}
+                  </ListGroupItemHeading>
+                  <ListGroupItemText>
+                    {rev.body}
+                  </ListGroupItemText>
+                </ListGroupItem>
+              )}
+            </ListGroup>
           </div>
         </div>
     );

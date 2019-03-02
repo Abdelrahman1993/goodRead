@@ -41,9 +41,6 @@ class Authors extends Component {
                    alt="Card image cap"/>
               <CardBody>
                 <CardTitle>
-                  {/*<a href={"http://localhost:3000/authors/"+author._id}>*/}
-                    {/*{author.firstName + " " + author.lastName}*/}
-                  {/*</a>*/}
                   <Link to={'/authors/'+author._id}>
                     {author.firstName + " " + author.lastName}
                   </Link>

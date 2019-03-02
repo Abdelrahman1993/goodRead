@@ -4,7 +4,7 @@ const reviewRouter = express.Router();
 
 reviewRouter.post('/', (req, res) => {
     const review = new Review({
-        review: req.body.review,
+        body: req.body.body,
         bookId: req.body.bookId,
         userId: req.body.userId
     });
@@ -17,8 +17,8 @@ reviewRouter.post('/', (req, res) => {
     });
 });
 
-reviewRouter.get('/', (req, res) => {
-    Review.find().populate('bookId').populate('userId').then(reviews => {
+reviewRouter.get('/:id', (req, res) => {
+    Review.find({bookId: req.params.id}).populate('bookId').populate('userId').then(reviews => {
         res.json(reviews);
         console.log(reviews);
     }).catch(err => {
