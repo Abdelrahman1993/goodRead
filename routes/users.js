@@ -24,21 +24,26 @@ router.get('/', (req, res) => {
 
 });
 
+router.get('/:id', (req, res) => {
+    User.findById(req.params.id).populate('authorId').populate('categoryId').then((data) => {
+        res.json(data);
+    }).catch((err) => {
+        res.json({ msg: err });
+    });
+});
+
 router.post('/signup', (req, res) => {
 
     req.checkBody('firstName', 'First name must be specified.').notEmpty();
-    req.checkBody('firstName', 'First name must be at least 3 character.').isLength({ min: 3, max: 8 });
+    req.checkBody('firstName', 'First name must be at least 3 character.').isLength({ min: 3 });
     req.checkBody('firstName', 'First name mustn\'t be contain special charachter .').isAlphanumeric();
-    req.checkBody('firstName', 'First name mustn\'t be contain numbers .').isNumeric();
+    // req.checkBody('firstName', 'First name mustn\'t be contain numbers .').isNumeric();
     // =================
-    req.checkBody('lastName', 'Last name must be at least 3 character.').isLength({ min: 3, max: 8 });
+    req.checkBody('lastName', 'Last name must be at least 3 character.').isLength({ min: 3 });
     req.checkBody('lastName', 'Last name must be specified.').notEmpty();
     req.checkBody('lastName', 'Last name mustn\'t be contain special charachter .').isAlphanumeric();
-    req.checkBody('lasttName', 'Last name mustn\'t be contain numbers .').isNumeric();
-    // ========================
-    req.checkBody('userName', 'User name must be specified.').notEmpty();
-    req.checkBody('userName', 'User name must be at least 3 character.').isLength({ min: 3, max: 8 });
-    req.checkBody('userName', 'User name mustn\'t be contain special charachter .').isAlphanumeric();
+    // req.checkBody('lastName', 'Last name mustn\'t be contain numbers .').isNumeric();
+
     // ========================
     req.checkBody('password', 'Password must be specified.').notEmpty();
     req.checkBody('password', 'Password must be at least 8 character.').isLength({ min: 8 });
@@ -56,35 +61,39 @@ router.post('/signup', (req, res) => {
         res.json(errors);
         return;
     } else {
-
+        console.log("1");
         User.findOne({ email: req.body.email }).then(user => {
             if (user) {
                 return res.status(400).json({ email: 'Email already exists' });
             } else {
+                console.log("2");
                 const newUser = new User({
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
-                    userName: req.body.userName,
+                    // userName: "req.body.userName",
                     email: req.body.email,
-                    password: req.body.password
+                    password: req.body.password,
+                    selectedBooks: [],
                 });
-
+                console.log("3");
                 bcrypt.genSalt(10, (err, salt) => {
                     bcrypt.hash(newUser.password, salt, (err, hash) => {
                         if (err)
                             res.json({ err: err });
                         newUser.password = hash;
+                        console.log("4");
+                        console.log(newUser);
                         newUser.save()
-                            .then(user => res.json(user))
+                            .then(user => {
+                                console.log("5")
+                                res.json(user);
+                            })
                             .catch(err => console.log(err));
                     });
                 });
             }
         });
-
-
     }
-
 });
 
 // @route   GET /users/login
@@ -119,14 +128,18 @@ router.post('/login', (req, res) => {
                                     _id: user._id,
                                     firstName: user.firstName,
                                     lastName: user.lastName,
-                                    userName: user.userName,
+                                    // userName: user.userName,
                                     email: user.email,
                                     photo: user.photo
                                 };
 
                                 jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                                     if (!err) {
-                                        res.json({ token: "Bearer " + token });
+                                        res.json({
+                                            token: "Bearer " + token,
+                                            name: user.firstName +" "+user.lastName,
+                                            currentUser: user,
+                                        });
                                     } else {
                                         res.json({ err: err });
                                     }
@@ -138,10 +151,7 @@ router.post('/login', (req, res) => {
                         })
                 }
             });
-
     }
-
-
 });
 
 
@@ -155,7 +165,7 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
         _id: req.user._id,
         firstName: req.user.firstName,
         lastName: req.user.lastName,
-        userName: req.user.userName,
+        // userName: req.user.userName,
         email: req.user.email,
         photo: req.user.photo,
         isAdmin: req.user.isAdmin,
@@ -174,6 +184,47 @@ router.get('/current/books', passport.authenticate('jwt', { session: false }),
         }).catch((err) => {
             res.send('error in getting data');
         })
+
+    });
+
+router.put('/current/books', passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+
+        let neWselectedBooks = req.user.selectedBooks;
+
+        const newBook = {
+            bookId: req.body.bookId,
+            rate: req.body.rate || 0,
+            shelve: req.body.readingStatus,
+        };
+        console.log(newBook);
+        console.log("------------------------------------");
+        console.log(neWselectedBooks);
+        let flag = false;
+        neWselectedBooks.map((book) => {
+            if (book.bookId.equals(newBook.bookId)) {
+                book.shelve = newBook.shelve;
+                flag = true;
+            }
+        });
+        console.log(neWselectedBooks);
+        if (!flag) {
+            neWselectedBooks.push(newBook);
+        }
+
+        User.findByIdAndUpdate(req.user.id, {
+            firstName: req.user.firstName,
+            lastName: req.user.lastName,
+            email: req.user.email,
+            password: req.user.password,
+            photo: req.user.photo,
+            isAdmin: req.user.isAdmin,
+            selectedBooks: neWselectedBooks,
+        }).then((data) => {
+            res.json(neWselectedBooks)
+        }).catch((err) => {
+            res.json({msg: err});
+        });
 
     });
 // authorRouter.get('/', (req, res) => {
@@ -198,6 +249,8 @@ router.get('/current/books', passport.authenticate('jwt', { session: false }),
 //     }
 //     res.json(currentUserBooks);
 // })
+
+
 
 
 module.exports = router;

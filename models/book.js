@@ -5,7 +5,7 @@ const bookSchema = new mongoose.Schema({
     name : String,
     categoryId: {type: mongoose.Schema.Types.ObjectId, ref: 'catogries'},
     authorId: { type: mongoose.Schema.Types.ObjectId, ref: 'authors' },
-    rate: Number
+    rate: {type: Number, default: 0}
 });
 
 const Book = mongoose.model('books', bookSchema);

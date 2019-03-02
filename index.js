@@ -21,6 +21,9 @@ const cors = require('cors');
 app.use(cors());
 
 
+const BookModel = require('./models/book');
+const AuthorModel = require('./models/author');
+const CategoryModel = require('./models/category');
 
 mongoose.set('useCreateIndex', true);
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -90,6 +93,41 @@ app.use('/users', userRouter);
 app.use('/admin', adminRouter);
 
 app.use('/userBook',userBookRouter);
+
+app.post('/search', async (req, res) => {
+    // console.log(req.body.searchValue);
+    let booksData = [];
+    let authorsData = [];
+    let categoriesData = [];
+
+    BookModel.find({"name": {"$regex": req.body.searchValue, "$options": "i"}},
+        function (err, data) {
+            booksData = data;
+        }).then(() => {
+            AuthorModel.find().then(data => {
+            authorsData = data.filter((d) => {
+                console.log((d.firstName + " " + d.lastName).search(req.body.searchValue) != -1);
+                return (d.firstName + " " + d.lastName).search(req.body.searchValue) != -1;
+            });
+            console.log(authorsData);
+        }).then(() => {
+            CategoryModel.find({"name": {"$regex": req.body.searchValue, "$options": "i"}},
+                function (err, data) {
+                    categoriesData = data;
+                    console.log(categoriesData);
+                }).then(async () => {
+                await res.json({
+                    'matchedBooks': booksData,
+                    'matchedAuthors': authorsData,
+                    'matchedCategories': categoriesData,
+                });
+            })
+            });
+    })
+
+    // console.log(authorsData);
+
+});
 
 app.listen(PORT, (req, res) => {
     console.log("server running on port: " + PORT);

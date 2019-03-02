@@ -55,8 +55,7 @@ bookRouter.get('/', (req, res) => {
 bookRouter.post('/', passport.authenticate('jwt', { session: false }),
     upload.single('photo'), (req, res) => {
 
-    console.log("req file ======== "+ req.file.path)
-    //console.log("req body ======== "+ req.body);
+
     if(req.user.isAdmin != true){
         return res.status(400).json({ msg: 'UnAthorized Access' });
     }
@@ -70,8 +69,13 @@ bookRouter.post('/', passport.authenticate('jwt', { session: false }),
             if (!author) {
                 return res.status(400).json({ email: 'this Author dose not exiest' });
             }
+            let p = 'uploads/2019-03-02T07:43:02.236Zbook.jpg'
+            if(req.file)
+            {
+               p = req.file.path;
+            }
         const book = new Book({
-           photo: req.file.path || '',
+           photo: p,
             name: req.body.name,
             categoryId: req.body.categoryId,
             authorId: req.body.authorId,
