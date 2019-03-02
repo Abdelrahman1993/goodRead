@@ -70,16 +70,27 @@ class AddAuthorForm extends Component {
 
     }
     handle_addAuthor =()=>{
-        AddAuthor(this.state.newAuthor).then(data => {
-          console.log(data);
+        if(!this.state.newAuthor.lastName ||
+            (/^ *$/.test(this.state.newAuthor.lastName)) ||
+            (/^$/.test(this.state.newAuthor.lastName)) ||
+        !this.state.newAuthor.firstName ||
+            (/^ *$/.test(this.state.newAuthor.firstName)) ||
+            (/^$/.test(this.state.newAuthor.firstName))) {
+            alert("please enter valid author first name and valid last name");
+        }
+        else {
+          AddAuthor(this.state.newAuthor).then(data => {
+            console.log(data);
             GetAuthors()
-            .then(data => {
-                this.setState({
+                .then(data => {
+                  this.setState({
                     authors: data,
-                    newAuthor : "",
+                    newAuthor: "",
+                  });
+                  alert("New Author added successfully");
                 });
-            });
-        });
+          });
+        }
     }
 
     handle_EditAuthor =()=>{
@@ -212,7 +223,7 @@ class AddAuthorForm extends Component {
                                 {author.lastName}
                             </th>
                             <th>
-                                {author.dateOfBirth}
+                                {author.dateOfBirth.substr(0, 10)}
                             </th>
                             <th>
                                 <button value={JSON.stringify(author)} type="button"

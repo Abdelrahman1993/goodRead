@@ -6,40 +6,43 @@ import Cookies from "universal-cookie";
 
 class SideBar extends Component {
 
-  componentDidMount() {
-    let cookies = new Cookies();
-    if (!cookies.get('token')) {
-      window.location = "http://localhost:3000/";
+  constructor(props) {
+    super(props);
+    this.state = {
+      bb : this.props,
     }
   }
 
-  render() {
-    return (
+    componentDidMount() {
+      console.log(this.state.bb);
+        let cookies = new Cookies();
+        if (!cookies.get('token')) {
+            window.location = "http://localhost:3000/";
+        }
+    }
 
-        <div className='container-fluid sidbar'>
+    render() {
+        return (
+            <Nav vertical>
+                <NavItem>
+                    <button onClick={this.props.all}>all</button>
+                    <hr/>
+                </NavItem>
+                <NavItem>
+                  <button onClick={this.props.read}>Read</button>
+                    <hr/>
+                </NavItem>
+                <NavItem>
+                  <button onClick={this.props.currentlyRead}>Currently Reading</button>
+                    <hr/>
+                </NavItem>
+                <NavItem>
+                  <button onClick={this.props.wantToRead}>Want to Read</button>
+                </NavItem>
+            </Nav>
 
-          <Nav vertical>
-            <NavItem>
-              <NavLink href="#">All</NavLink>
-              <hr/>
-            </NavItem>
-
-            <NavItem>
-              <NavLink href="#">Read</NavLink>
-              <hr/>
-            </NavItem>
-            <NavItem>
-              <NavLink href="#">Currently Reading</NavLink>
-              <hr/>
-            </NavItem>
-            <NavItem>
-              <NavLink href="#">Want to Read</NavLink>
-            </NavItem>
-          </Nav>
-        </div>
-
-    );
-  }
+        );
+    }
 }
 
 export default SideBar;

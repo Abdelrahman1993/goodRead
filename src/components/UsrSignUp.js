@@ -17,6 +17,7 @@ import SignUpUser from "../service/userSignUp";
 import GetBooks from "../service/book";
 import GetCategories from "../service/category";
 import GetAuthors from "../service/author";
+import Cookies from "universal-cookie";
 
 class UsrSignUp extends React.Component {
 
@@ -56,6 +57,11 @@ class UsrSignUp extends React.Component {
             newBook: {...this.state.newBook, authorId: data[0]._id},
           })
         });
+
+    let cookies = new Cookies();
+    if (cookies.get('token')) {
+        window.location = "http://localhost:3000/home";
+    }
   }
 
   handleUpdateFirstName = (event) => {
@@ -83,6 +89,7 @@ class UsrSignUp extends React.Component {
     });
   }
 
+
   // handleUpdatePhoto = (event) => {
   //     this.setState({
   //       photo: event.target.files[0]
@@ -90,6 +97,7 @@ class UsrSignUp extends React.Component {
   // }
 
   hundleSignUp() {
+
     SignUpUser({
       'firstName': this.state.firstName,
       'lastName': this.state.lastName,
@@ -98,8 +106,21 @@ class UsrSignUp extends React.Component {
       // 'photo': this.state.photo,
     }).then(data => {
       console.log(data);
-      alert("sign up successfully please login");
-
+      if(data.email === ("Email already exists"))
+      {
+        alert("Email already exists");
+      }
+      else if(data.firstName.msg)
+      {
+        alert("error in first name enter 3 to 8 character length");
+      }
+      else if(data.lastName.msg)
+      {
+        alert("error in first name enter 3 to 8 character length");
+      }
+      else {
+        alert("sign up successfully please login");
+      }
     });
   }
 
@@ -162,12 +183,12 @@ class UsrSignUp extends React.Component {
               <Form>
                 <FormGroup>
                   <Input type="name" name="fname" placeholder="First name"
-                         value={this.state.firstName}
+                         value={this.state.firstName} pattern='[A-Za-z\\s]*'
                          onChange={this.handleUpdateFirstName}/>
                 </FormGroup>
                 <FormGroup>
                   <Input type="name" name="lname" placeholder="Last name"
-                         value={this.state.lastName}
+                         value={this.state.lastName} pattern='[A-Za-z\\s]*'
                          onChange={this.handleUpdateLastName}/>
                 </FormGroup>
                 <FormGroup>

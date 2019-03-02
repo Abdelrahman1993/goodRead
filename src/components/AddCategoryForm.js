@@ -57,17 +57,24 @@ class AddCategoryForm extends Component {
     }
 
     handle_addCategory =()=>{
-        AddCategory({
+        if((/^ *$/.test(this.state.newCategory)) || (/^$/.test(this.state.newCategory))) {
+            alert("please enter valid category");
+        }
+        else {
+            AddCategory({
             'name': this.state.newCategory,
-        }).then(data => {
-            GetCategories()
-            .then(data => {
-                this.setState({
-                    categories: data,
-                    newCategory : "",
+            }).then(data => {
+                GetCategories()
+                .then(data => {
+                    this.setState({
+                        categories: data,
+                        newCategory : "",
+                    });
+                    alert("category added successfully");
                 });
             });
-        });
+        }
+
     }
 
     handle_EditCategory =()=>{

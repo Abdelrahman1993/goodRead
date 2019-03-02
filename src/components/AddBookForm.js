@@ -96,15 +96,23 @@ class AddBookForm extends Component{
     }
 
     handle_addBook =()=>{
-        AddBook(this.state.newBook).then(data => {
-            console.log(data);
-            GetBooks().then((data) => {
-                this.setState({
-                    books: data,
-                    newBook :'',
-                });
-            })
-        });
+        if(!this.state.newBook.name ||
+            (/^ *$/.test(this.state.newBook.name)) ||
+            (/^$/.test(this.state.newBook.name))) {
+            alert("please enter valid book name");
+        }
+        else {
+            AddBook(this.state.newBook).then(data => {
+                console.log(data);
+                GetBooks().then((data) => {
+                    this.setState({
+                        books: data,
+                        newBook: '',
+                    });
+                    alert("book added successfully");
+                })
+            });
+        }
     }
 
     handle_EditBook =()=>{
