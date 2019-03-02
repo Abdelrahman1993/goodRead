@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/goodRead.iml" filepath="$PROJECT_DIR$/.idea/goodRead.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/react_project.iml" filepath="$PROJECT_DIR$/.idea/react_project.iml" />
+>>>>>>> 9acfcaf0ffd53494dbbf7101293b9806aee6e67e
     </modules>
   </component>
 </project>
