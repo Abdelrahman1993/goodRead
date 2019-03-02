@@ -18,8 +18,7 @@ import BookProfile from "./components/bookprofil";
 
 import Authors from "./components/authors";
 import AuthorProfile from "./components/authorprofile";
-// import AuthorBook from "./components/authorbookprofile";
-import AuthorBook from "./components/author_books";
+import AuthorBook from "./components/authorbookprofile";
 
 import Categories from "./components/categories";
 import Category from "./components/category";

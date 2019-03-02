@@ -7,6 +7,7 @@ import StarRatings from 'react-star-ratings';
 import Cookies from "universal-cookie";
 import GetUser from "../service/getuser";
 import SetStatusReading from "../service/updateReadingStatus";
+import {Link} from "react-router-dom";
 export default class TableContent extends Component {
 
   constructor(props) {
@@ -138,8 +139,17 @@ export default class TableContent extends Component {
                         <img src={"http://localhost:4000/"+book.photo}
                                      width="50" height="50" alt="error image"/>
                       </td>
-                      <td>{book.name}</td>
-                      <td>{book.authorId.firstName + " " + book.authorId.lastName}</td>
+                      <td>
+                        <Link to={"/books/" + book._id}>
+                          {book.name}
+                        </Link>
+                      </td>
+                      <td>
+                        <Link to={"/authors/" + book.authorId._id}>
+                          {book.authorId.firstName + " " + book.authorId.lastName}
+                        </Link>
+
+                      </td>
                       <td>
                         <Progress value={book.rate}/>
                       </td>

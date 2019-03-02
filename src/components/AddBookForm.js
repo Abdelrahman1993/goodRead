@@ -295,7 +295,6 @@ class AddBookForm extends Component{
                             <th>{book.categoryId.name}</th>
                             <th>{book.authorId.firstName +" "+book.authorId.lastName}</th>
                             <th>
-
                                 <button value={JSON.stringify(book)} type="button"
                                         className="btn btn-info"
                                         name="edit"

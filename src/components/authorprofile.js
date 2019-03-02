@@ -35,7 +35,7 @@ class AuthorProfile extends Component {
           <div className="row AuthorProfile">
             <div className="col_trainings authorImg">
               <div className="Img">
-                  <img style={{width:100, height:100}}
+                  <img style={{width:200, height:200}}
                        src={"http://localhost:4000/"+this.state.currentAuthor.photo}
                        alt="Card image cap"/>
               </div>

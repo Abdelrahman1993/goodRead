@@ -79,6 +79,7 @@ class AddAuthorForm extends Component {
             alert("please enter valid author first name and valid last name");
         }
         else {
+          console.log(this.state.newAuthor);
           AddAuthor(this.state.newAuthor).then(data => {
             console.log(data);
             GetAuthors()

@@ -2,6 +2,7 @@ import React , {Component} from 'react';
 import {Table} from "reactstrap";
 import GetCategories from "../service/category";
 import Cookies from "universal-cookie";
+import Link from "react-router-dom/es/Link";
 
 
 class Categories extends Component {
@@ -40,9 +41,9 @@ class Categories extends Component {
               {this.state.categories.map((category , index) =>
                   <tr>
                       <th key={index}>
-                        <a href={"/categories/" + category._id + "/" + category.name}>
+                        <Link to={"/categories/" + category._id + "/" + category.name}>
                           {category.name}
-                        </a>
+                        </Link>
                       </th>
                   </tr>)}
               </thead>

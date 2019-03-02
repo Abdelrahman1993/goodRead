@@ -3,6 +3,8 @@ import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
 import GetBooks from "../service/book";
 import Cookies from "universal-cookie";
+import Link from "react-router-dom/es/Link";
+
 
 class CategoryBooks extends Component {
 
@@ -47,9 +49,12 @@ class CategoryBooks extends Component {
                    alt="Card image cap"/>
               <CardBody>
                 <CardTitle>
-                  <a href={"http://localhost:3000/books/"+book._id}>
+                  <Link to={"/books/" + book._id}>
                     {book.name}
-                  </a>
+                  </Link>
+                  {/*<a href={"http://localhost:3000/books/"+book._id}>*/}
+                    {/*{book.name}*/}
+                  {/*</a>*/}
                 </CardTitle>
               </CardBody>
             </Card>

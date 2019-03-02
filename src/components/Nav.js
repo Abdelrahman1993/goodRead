@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import '../App.css';
 import Cookies from 'universal-cookie';
+import {Link} from "react-router-dom";
 
 class Nav extends Component {
 
@@ -39,24 +40,27 @@ class Nav extends Component {
 
         <div className='container-fluid navIBack '>
           <nav className="mb-1 navIBack navbar navbar-expand-lg navbar-dark orange lighten-1">
-            <a className="navbar-brand" href="http://localhost:3000/home">GoodReads</a>
+            <Link to={'/home/'} className="navbar-brand">GoodReads
+            </Link>
             <div className="collapse navbar-collapse" id="navbarSupportedContent-555">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item active">
-                  <a className="nav-link" href="http://localhost:3000/home">Home
+                  <Link to={'/home/'} className="nav-link">Home
                     <span className="sr-only">(current)</span>
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="http://localhost:3000/categories/">
-                    Categories
-                  </a>
+                  <Link to={'/categories/'} className="nav-link">Categories
+
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="http://localhost:3000/books/">Books</a>
+                  <Link to={'/books/'} className="nav-link">Books
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="http://localhost:3000/authors/">Authors</a>
+                  <Link to={'/authors/'} className="nav-link">Authors
+                  </Link>
                 </li>
                 <li className="nav-item moveinput" style={{width: 300}}>
                   <input className="form-control" type="text"

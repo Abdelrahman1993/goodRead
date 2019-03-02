@@ -2,6 +2,7 @@ import React from 'react';
 import {ListGroup, ListGroupItem} from 'reactstrap';
 import GetMatched from "../service/search";
 import Cookies from "universal-cookie";
+import {Link} from "react-router-dom";
 
 export default class Example extends React.Component {
 
@@ -41,26 +42,26 @@ export default class Example extends React.Component {
             <h4>Results in Categories</h4>
             {this.state.matchedCategories.map((cat, index)=>
               <ListGroupItem key={index}>
-                <a href={"/categories/" + cat._id + "/" + cat.name}>
+                <Link to={"/categories/" + cat._id+"/"+ cat.name}>
                   {cat.name}
-                </a>
+                </Link>
               </ListGroupItem>
             )}
 
             <h4>Results in Books</h4>
             {this.state.matchedBooks.map((book, index)=>
               <ListGroupItem key={index}>
-                <a href={"/books/" + book._id}>
+                <Link to={"/books/" + book._id}>
                   {book.name}
-                </a>
+                </Link>
               </ListGroupItem>
             )}
             <h4>Results in Authors</h4>
             {this.state.matchedAuthors.map((auth, index)=>
               <ListGroupItem key={index}>
-                <a href={"/authors/" + auth._id}>
+                <Link to={"/authors/" + auth._id}>
                   {auth.firstName + " " + auth.lastName}
-                </a>
+                </Link>
               </ListGroupItem>
             )}
           </ListGroup>
